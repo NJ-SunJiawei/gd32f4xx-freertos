@@ -46,14 +46,14 @@
 	extern uint32_t SystemCoreClock;
 #endif
 
-#define configUSE_PREEMPTION			1
+#define configUSE_PREEMPTION			1  //时间片
 #define configUSE_IDLE_HOOK				0
 #define configUSE_TICK_HOOK				0
-#define configCPU_CLOCK_HZ				( SystemCoreClock )
-#define configTICK_RATE_HZ				( ( TickType_t ) 1000 )
-#define configMAX_PRIORITIES			( 5 )
+#define configCPU_CLOCK_HZ				( SystemCoreClock ) //systick周期现在默认1ms
+#define configTICK_RATE_HZ				( ( TickType_t ) 1000 )//时间片长度1ms = systick周期
+#define configMAX_PRIORITIES			( 5 ) //task任务优先级
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 130 )
-#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )//75k
+#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )//静态区内存池大小75k
 #define configMAX_TASK_NAME_LEN			( 10 )
 #define configUSE_TRACE_FACILITY		1
 #define configUSE_16_BIT_TICKS			0
@@ -85,9 +85,7 @@ to exclude the API function. */
 #define INCLUDE_vTaskDelay				1
 
 /* Cortex-M specific definitions. */
-//中断优先级数值越小，优先级就越高。FreeRTOS的任务优先级是，任务优先级数值越小，优先级越低。
-
-//使能GD32使用4位优先级|BIT7|BIT6|BIT5|BIT4|····|
+////中断优先级
 #ifdef __NVIC_PRIO_BITS
 	/* __BVIC_PRIO_BITS will be specified when CMSIS is being used. */
 	#define configPRIO_BITS       		__NVIC_PRIO_BITS
@@ -97,29 +95,23 @@ to exclude the API function. */
 
 /* The lowest interrupt priority that can be used in a call to a "set priority"
 function. */
-//GD32使能4位中断位，GROUP4抢占中断优先级，配置内核优先级为最低级15级(数字越大优先级越小)
 #define configLIBRARY_LOWEST_INTERRUPT_PRIORITY			0xf
 
 /* The highest interrupt priority that can be used by any interrupt service
 routine that makes calls to interrupt safe FreeRTOS API functions.  DO NOT CALL
 INTERRUPT SAFE FREERTOS API FUNCTIONS FROM ANY INTERRUPT THAT HAS A HIGHER
 PRIORITY THAN THIS! (higher priorities are lower numeric values. */
-//BASEEPRI寄存器阈值，高于5级的优先级(优先级数小于 5级)不归FreeRTOS 管理
-//开关中断
 #define configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY	5
 
 /* Interrupt priorities used by the kernel port layer itself.  These are generic
 to all Cortex-M ports, and do not rely on any particular library functions. */
-//设置NVIC优先级寄存器(8bit)中断优先级设置位 0xF << 4 = 0xF0(用来设置 PendSV 和SysTick的中断优先级)
 #define configKERNEL_INTERRUPT_PRIORITY 		( configLIBRARY_LOWEST_INTERRUPT_PRIORITY << (8 - configPRIO_BITS) )
 /* !!!! configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to zero !!!!
 See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
-//原理同上
 #define configMAX_SYSCALL_INTERRUPT_PRIORITY 	( configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY << (8 - configPRIO_BITS) )
 
 /* Normal assert() semantics without relying on the provision of an assert.h
 header file. */
-//断言，若false则关中断，loop循环在错误处，正式发布请屏蔽；
 #define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
 
 /* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS

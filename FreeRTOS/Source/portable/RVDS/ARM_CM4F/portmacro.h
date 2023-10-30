@@ -105,15 +105,10 @@
     extern void vPortEnterCritical( void );
     extern void vPortExitCritical( void );
 
-		//开关中断(屏蔽中断)
-    #define portDISABLE_INTERRUPTS()                  vPortRaiseBASEPRI()//关中断
-    #define portENABLE_INTERRUPTS()                   vPortSetBASEPRI( 0 )//开中断
-
-		//临界区(临界区是在执行的时候不能被中断的代码段，临街区代码要精简，因为会开关中断)
-		//任务型临界区
+    #define portDISABLE_INTERRUPTS()                  vPortRaiseBASEPRI()
+    #define portENABLE_INTERRUPTS()                   vPortSetBASEPRI( 0 )
     #define portENTER_CRITICAL()                      vPortEnterCritical()
     #define portEXIT_CRITICAL()                       vPortExitCritical()
-		//中断型临界区(在中断中使用，并且该中断要小于configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY)
     #define portSET_INTERRUPT_MASK_FROM_ISR()         ulPortRaiseBASEPRI()
     #define portCLEAR_INTERRUPT_MASK_FROM_ISR( x )    vPortSetBASEPRI( x )
 

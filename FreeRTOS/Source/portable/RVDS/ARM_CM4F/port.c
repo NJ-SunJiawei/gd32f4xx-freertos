@@ -71,7 +71,6 @@
 #define portCORTEX_M7_r0p1_ID                 ( 0x410FC271UL )
 #define portCORTEX_M7_r0p0_ID                 ( 0x410FC270UL )
 
-//PendSV 和SysTick0中断优先级设置寄存器地址0xE000ed20(4个8位寄存器组合成32位寄存器)分别移位16和24
 #define portNVIC_PENDSV_PRI                   ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 16UL )
 #define portNVIC_SYSTICK_PRI                  ( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 24UL )
 
@@ -395,8 +394,8 @@ BaseType_t xPortStartScheduler( void )
     #endif /* configASSERT_DEFINED */
 
     /* Make PendSV and SysTick the lowest priority interrupts. */
-    portNVIC_SHPR3_REG |= portNVIC_PENDSV_PRI;//设置PendSV优先级(最低优先级15级)
-    portNVIC_SHPR3_REG |= portNVIC_SYSTICK_PRI;//设置SysTick优先级(最低优先级15级)
+    portNVIC_SHPR3_REG |= portNVIC_PENDSV_PRI;
+    portNVIC_SHPR3_REG |= portNVIC_SYSTICK_PRI;
 
     /* Start the timer that generates the tick ISR.  Interrupts are disabled
      * here already. */
