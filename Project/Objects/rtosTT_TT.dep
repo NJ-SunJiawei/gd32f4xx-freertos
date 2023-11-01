@@ -1,7 +1,7 @@
 Dependencies for Project 'rtosTT', Target 'TT': (DO NOT MODIFY !)
 F (..\App\gd32f4xx_it.c)(0x6537360A)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_it.o --omf_browse .\objects\gd32f4xx_it.crf --depend .\objects\gd32f4xx_it.d)
 I (..\App\gd32f4xx_it.h)(0x65373213)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -42,9 +42,16 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 I (..\App\systick.h)(0x62D7C0AA)
 F (..\App\gd32f4xx_it.h)(0x65373213)()
 F (..\App\gd32f4xx_libopt.h)(0x62D7C0AA)()
-F (..\App\main.c)(0x653CDE18)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\App\main.c)(0x6541EEC5)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\App\os_api.h)(0x6541B117)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
+I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x599EDB3E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
+I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x599EDB3E)
 I (..\Utilities\gd32f450i_eval.h)(0x6537A950)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -78,24 +85,27 @@ I (..\Library\Include\gd32f4xx_usart.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_wwdgt.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_misc.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_enet.h)(0x62D7C0AC)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+I (..\Utilities\drv_gd25q40.h)(0x6541ED19)
 I (..\App\systick.h)(0x62D7C0AA)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
+I (..\FreeRTOS\Source\include\queue.h)(0x64020E50)
+I (..\FreeRTOS\Source\include\event_groups.h)(0x64020E50)
+I (..\FreeRTOS\Source\include\timers.h)(0x64020E50)
+I (..\FreeRTOS\Source\include\semphr.h)(0x64020E50)
 F (..\App\systick.c)(0x653874D4)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\systick.o --omf_browse .\objects\systick.crf --depend .\objects\systick.d)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -135,13 +145,14 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 I (..\App\systick.h)(0x62D7C0AA)
 F (..\App\systick.h)(0x62D7C0AA)()
+F (..\App\os_api.h)(0x6541B117)()
 F (..\CMSIS\core_cm4.h)(0x62D7C0AE)()
 F (..\CMSIS\core_cm4_simd.h)(0x62D7C0AE)()
 F (..\CMSIS\core_cmFunc.h)(0x62D7C0AE)()
 F (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)()
-F (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)()
+F (..\CMSIS\gd32f4xx.h)(0x6541B1C6)()
 F (..\CMSIS\system_gd32f4xx.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\system_gd32f4xx.o --omf_browse .\objects\system_gd32f4xx.crf --depend .\objects\system_gd32f4xx.d)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -182,7 +193,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\CMSIS\system_gd32f4xx.h)(0x62D7C0AE)()
 F (..\Library\Source\gd32f4xx_adc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_adc.o --omf_browse .\objects\gd32f4xx_adc.crf --depend .\objects\gd32f4xx_adc.d)
 I (..\Library\Include\gd32f4xx_adc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -221,7 +232,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_can.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_can.o --omf_browse .\objects\gd32f4xx_can.crf --depend .\objects\gd32f4xx_can.d)
 I (..\Library\Include\gd32f4xx_can.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -260,7 +271,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_crc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_crc.o --omf_browse .\objects\gd32f4xx_crc.crf --depend .\objects\gd32f4xx_crc.d)
 I (..\Library\Include\gd32f4xx_crc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -299,7 +310,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_ctc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_ctc.o --omf_browse .\objects\gd32f4xx_ctc.crf --depend .\objects\gd32f4xx_ctc.d)
 I (..\Library\Include\gd32f4xx_ctc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -338,7 +349,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_dac.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_dac.o --omf_browse .\objects\gd32f4xx_dac.crf --depend .\objects\gd32f4xx_dac.d)
 I (..\Library\Include\gd32f4xx_dac.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -377,7 +388,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_dbg.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_dbg.o --omf_browse .\objects\gd32f4xx_dbg.crf --depend .\objects\gd32f4xx_dbg.d)
 I (..\Library\Include\gd32f4xx_dbg.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -416,7 +427,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_dci.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_dci.o --omf_browse .\objects\gd32f4xx_dci.crf --depend .\objects\gd32f4xx_dci.d)
 I (..\Library\Include\gd32f4xx_dci.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -455,7 +466,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_dma.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_dma.o --omf_browse .\objects\gd32f4xx_dma.crf --depend .\objects\gd32f4xx_dma.d)
 I (..\Library\Include\gd32f4xx_dma.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -494,7 +505,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_enet.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_enet.o --omf_browse .\objects\gd32f4xx_enet.crf --depend .\objects\gd32f4xx_enet.d)
 I (..\Library\Include\gd32f4xx_enet.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -533,7 +544,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 F (..\Library\Source\gd32f4xx_exmc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_exmc.o --omf_browse .\objects\gd32f4xx_exmc.crf --depend .\objects\gd32f4xx_exmc.d)
 I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -572,7 +583,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_exti.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_exti.o --omf_browse .\objects\gd32f4xx_exti.crf --depend .\objects\gd32f4xx_exti.d)
 I (..\Library\Include\gd32f4xx_exti.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -611,7 +622,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_fmc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_fmc.o --omf_browse .\objects\gd32f4xx_fmc.crf --depend .\objects\gd32f4xx_fmc.d)
 I (..\Library\Include\gd32f4xx_fmc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -650,7 +661,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_fwdgt.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_fwdgt.o --omf_browse .\objects\gd32f4xx_fwdgt.crf --depend .\objects\gd32f4xx_fwdgt.d)
 I (..\Library\Include\gd32f4xx_fwdgt.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -689,7 +700,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_gpio.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_gpio.o --omf_browse .\objects\gd32f4xx_gpio.crf --depend .\objects\gd32f4xx_gpio.d)
 I (..\Library\Include\gd32f4xx_gpio.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -728,7 +739,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_i2c.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_i2c.o --omf_browse .\objects\gd32f4xx_i2c.crf --depend .\objects\gd32f4xx_i2c.d)
 I (..\Library\Include\gd32f4xx_i2c.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -767,7 +778,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_ipa.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_ipa.o --omf_browse .\objects\gd32f4xx_ipa.crf --depend .\objects\gd32f4xx_ipa.d)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -806,7 +817,7 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_iref.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_iref.o --omf_browse .\objects\gd32f4xx_iref.crf --depend .\objects\gd32f4xx_iref.d)
 I (..\Library\Include\gd32f4xx_iref.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -845,7 +856,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_misc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_misc.o --omf_browse .\objects\gd32f4xx_misc.crf --depend .\objects\gd32f4xx_misc.d)
 I (..\Library\Include\gd32f4xx_misc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -884,7 +895,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_pmu.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_pmu.o --omf_browse .\objects\gd32f4xx_pmu.crf --depend .\objects\gd32f4xx_pmu.d)
 I (..\Library\Include\gd32f4xx_pmu.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -923,7 +934,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_rcu.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_rcu.o --omf_browse .\objects\gd32f4xx_rcu.crf --depend .\objects\gd32f4xx_rcu.d)
 I (..\Library\Include\gd32f4xx_rcu.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -962,7 +973,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_rtc.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_rtc.o --omf_browse .\objects\gd32f4xx_rtc.crf --depend .\objects\gd32f4xx_rtc.d)
 I (..\Library\Include\gd32f4xx_rtc.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1001,7 +1012,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_sdio.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_sdio.o --omf_browse .\objects\gd32f4xx_sdio.crf --depend .\objects\gd32f4xx_sdio.d)
 I (..\Library\Include\gd32f4xx_sdio.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1040,7 +1051,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_spi.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_spi.o --omf_browse .\objects\gd32f4xx_spi.crf --depend .\objects\gd32f4xx_spi.d)
 I (..\Library\Include\gd32f4xx_spi.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1079,7 +1090,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_syscfg.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_syscfg.o --omf_browse .\objects\gd32f4xx_syscfg.crf --depend .\objects\gd32f4xx_syscfg.d)
 I (..\Library\Include\gd32f4xx_syscfg.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1118,7 +1129,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_timer.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_timer.o --omf_browse .\objects\gd32f4xx_timer.crf --depend .\objects\gd32f4xx_timer.d)
 I (..\Library\Include\gd32f4xx_timer.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1157,7 +1168,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_tli.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_tli.o --omf_browse .\objects\gd32f4xx_tli.crf --depend .\objects\gd32f4xx_tli.d)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1196,7 +1207,7 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_trng.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_trng.o --omf_browse .\objects\gd32f4xx_trng.crf --depend .\objects\gd32f4xx_trng.d)
 I (..\Library\Include\gd32f4xx_trng.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1235,7 +1246,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_usart.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_usart.o --omf_browse .\objects\gd32f4xx_usart.crf --depend .\objects\gd32f4xx_usart.d)
 I (..\Library\Include\gd32f4xx_usart.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1274,7 +1285,7 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Library\Source\gd32f4xx_wwdgt.c)(0x62D7C0AD)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f4xx_wwdgt.o --omf_browse .\objects\gd32f4xx_wwdgt.crf --depend .\objects\gd32f4xx_wwdgt.d)
 I (..\Library\Include\gd32f4xx_wwdgt.h)(0x62D7C0AC)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1312,9 +1323,9 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 F (..\Startup\startup_gd32f450_470.s)(0x653C8516)(--cpu Cortex-M4.fp -g --apcs=interwork -I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 526" --pd "GD32F470 SETA 1"--list .\listings\startup_gd32f450_470.lst --xref -o .\objects\startup_gd32f450_470.o --depend .\objects\startup_gd32f450_470.d)
-F (..\Utilities\gd32f450i_eval.c)(0x6537A96C)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f450i_eval.o --omf_browse .\objects\gd32f450i_eval.crf --depend .\objects\gd32f450i_eval.d)
+F (..\Utilities\gd32f450i_eval.c)(0x6541C3AF)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f450i_eval.o --omf_browse .\objects\gd32f450i_eval.crf --depend .\objects\gd32f450i_eval.d)
 I (..\Utilities\gd32f450i_eval.h)(0x6537A950)
-I (..\CMSIS\gd32f4xx.h)(0x62D7C0AE)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
 I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
@@ -1354,15 +1365,57 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
 I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 F (..\Utilities\gd32f450i_eval.h)(0x6537A950)()
+F (..\Utilities\drv_gd25q40.c)(0x6541ED46)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\drv_gd25q40.o --omf_browse .\objects\drv_gd25q40.crf --depend .\objects\drv_gd25q40.d)
+I (..\Utilities\drv_gd25q40.h)(0x6541ED19)
+I (..\CMSIS\gd32f4xx.h)(0x6541B1C6)
+I (..\CMSIS\core_cm4.h)(0x62D7C0AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\CMSIS\core_cmInstr.h)(0x62D7C0AE)
+I (..\CMSIS\core_cmFunc.h)(0x62D7C0AE)
+I (..\CMSIS\core_cm4_simd.h)(0x62D7C0AE)
+I (..\CMSIS\system_gd32f4xx.h)(0x62D7C0AE)
+I (..\App\gd32f4xx_libopt.h)(0x62D7C0AA)
+I (..\Library\Include\gd32f4xx_rcu.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_adc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_can.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_crc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_ctc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_dac.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_dbg.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_dci.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_dma.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_exti.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_fmc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_fwdgt.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_gpio.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_syscfg.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_i2c.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_iref.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_pmu.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_rtc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_sdio.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_spi.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_timer.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_trng.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_usart.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_wwdgt.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_misc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_enet.h)(0x62D7C0AC)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
+I (..\Library\Include\gd32f4xx_exmc.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_ipa.h)(0x62D7C0AC)
+I (..\Library\Include\gd32f4xx_tli.h)(0x62D7C0AC)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
+F (..\Utilities\drv_gd25q40.h)(0x6541ED19)()
 F (..\FreeRTOS\Source\croutine.c)(0x64020E50)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\croutine.o --omf_browse .\objects\croutine.crf --depend .\objects\croutine.d)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1372,11 +1425,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1387,11 +1440,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
 F (..\FreeRTOS\Source\queue.c)(0x64020E50)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
@@ -1400,11 +1453,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1414,11 +1467,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1429,11 +1482,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1444,11 +1497,11 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
@@ -1459,7 +1512,7 @@ F (..\FreeRTOS\Source\include\croutine.h)(0x64020E50)()
 F (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)()
 F (..\FreeRTOS\Source\include\event_groups.h)(0x64020E50)()
 F (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)()
-F (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)()
+F (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)()
 F (..\FreeRTOS\Source\include\list.h)(0x64020E50)()
 F (..\FreeRTOS\Source\include\message_buffer.h)(0x64020E50)()
 F (..\FreeRTOS\Source\include\mpu_prototypes.h)(0x64020E50)()
@@ -1479,24 +1532,24 @@ I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
-F (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\port.c)(0x64020E50)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
+F (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\port.c)(0x6540FDC4)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Utilities -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F-I.\RTE\_TT-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x64020E50)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653A86AC)
+I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x653E3411)
 I (..\FreeRTOS\Source\include\projdefs.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\portable.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\deprecated_definitions.h)(0x64020E50)
-I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)
+I (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)
 I (..\FreeRTOS\Source\include\mpu_wrappers.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\task.h)(0x64020E50)
 I (..\FreeRTOS\Source\include\list.h)(0x64020E50)
-F (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x64020E50)()
+F (..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x653FA7E4)()

@@ -412,6 +412,11 @@
               <FileType>5</FileType>
               <FilePath>..\App\systick.h</FilePath>
             </File>
+            <File>
+              <FileName>os_api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\os_api.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -626,6 +631,16 @@
               <FileName>gd32f450i_eval.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Utilities\gd32f450i_eval.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gd25q40.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Utilities\drv_gd25q40.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gd25q40.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Utilities\drv_gd25q40.h</FilePath>
             </File>
           </Files>
         </Group>

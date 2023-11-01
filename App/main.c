@@ -35,77 +35,63 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 OF SUCH DAMAGE.
 */
 
-#include "gd32f450i_eval.h"
-#include "systick.h"
-#include "FreeRTOS.h"
-#include "task.h"
+#include "os_api.h"
+
+os_task_t  task1_handle;
+os_task_t  task2_handle;
 
 static void app_task1(void* pvParameters)
 {
-	for(;;)
-	{
-		printf("task1 enter \r\n");
-		gpio_bit_set(GPIOC, GPIO_PIN_6);	
-		vTaskDelay(1000);
-		gpio_bit_reset(GPIOC, GPIO_PIN_6);	
-		vTaskDelay(1000);
-	}
+		for(;;)
+		{
+			printf("task1 enter %u\r\n", os_time_get());
+			gpio_bit_set(GPIOC, GPIO_PIN_6);	
+			os_msleep(1000);
+			gpio_bit_reset(GPIOC, GPIO_PIN_6);	
+			os_msleep(1000);
+		}
 }
 
 static void app_task2(void* pvParameters)
 {
-	for(;;)
-	{
-		printf("task2 enter \r\n");
-		gpio_bit_set(GPIOC, GPIO_PIN_13);	
-		vTaskDelay(200);
-		gpio_bit_reset(GPIOC, GPIO_PIN_13);
-		vTaskDelay(200);
-	}
+		for(;;)
+		{
+			printf("task2 enter %u\r\n", os_time_get());
+			gpio_bit_set(GPIOC, GPIO_PIN_13);	
+			os_msleep(200);
+			gpio_bit_reset(GPIOC, GPIO_PIN_13);
+			os_msleep(200);
+		}
 }
 
 void Led_Init(void)
 {
-	//初始化时钟
-	rcu_periph_clock_enable(RCU_GPIOC);
-	//设置输入输出模式
-	gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_6|GPIO_PIN_13);
-	//设置引脚速率
-	gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_6|GPIO_PIN_13);	
+		rcu_periph_clock_enable(RCU_GPIOC);
+		gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_6|GPIO_PIN_13);
+		gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_6|GPIO_PIN_13);	
 }
-/*!
-    \brief      main function
-    \param[in]  none
-    \param[out] none
-    \retval     none
-*/
+
 int main(void)
 {
-	nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
-	/* systick configuration */
-	//systick_config(); 
-	/* configure EVAL_COM1 */
-	gd_eval_com_init(EVAL_COM1);
+		nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
+		/* configure uart5 */
+		gd_eval_com_init(EVAL_COM1);
+		/* configure spi flash */
+		gd_eval_GD25Q40_Init();
 
-	Led_Init();
+		//DRV_GD25Q40_BulkErase();
+		char *test = "12345678";
+		gd_eval_GD25Q40_BufferWrite((uint8_t *)test, 0x000000000, 8);
 
-		/* 创建app_task1任务 */
-	xTaskCreate((TaskFunction_t )app_task1,  		/* 任务入口函数 */
-				(const char*    )"app_task1",					/* 任务名字 */
-				(uint16_t       )128,  								/* 任务栈大小 */
-				(void*          )NULL,								/* 任务入口函数参数 */
-				(UBaseType_t    )4, 									/* 任务的优先级 */
-				(TaskHandle_t*  )NULL);								/* 任务控制块指针 */ 
+		uint8_t tmp[20] = {0};
+		gd_eval_GD25Q40_BufferRead(tmp, 0x000000000, 8);
+		printf("flash1 %s\r\n", tmp);
 
-				
-		/* 创建app_task2任务 */
-	xTaskCreate((TaskFunction_t )app_task2,  		/* 任务入口函数 */
-				(const char*    )"app_task2",					/* 任务名字 */
-				(uint16_t       )128,  								/* 任务栈大小 */
-				(void*          )NULL,								/* 任务入口函数参数 */
-				(UBaseType_t    )4, 									/* 任务的优先级 */
-				(TaskHandle_t*  )NULL);								/* 任务控制块指针 */ 
+		Led_Init();
 
- 	/* 开启任务调度 */
-	vTaskStartScheduler(); 
+		os_task_create(app_task1, "app_task1",128,NULL,4,&task1_handle);
+		os_task_create(app_task2, "app_task2",128,NULL,4,&task2_handle);
+
+		vTaskStartScheduler();
+		for(;;){}
 }

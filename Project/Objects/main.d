@@ -1,4 +1,11 @@
 .\objects\main.o: ..\App\main.c
+.\objects\main.o: ..\App\os_api.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\main.o: ..\Utilities\gd32f450i_eval.h
 .\objects\main.o: ..\CMSIS\gd32f4xx.h
 .\objects\main.o: ..\CMSIS\core_cm4.h
@@ -35,11 +42,10 @@
 .\objects\main.o: ..\Library\Include\gd32f4xx_wwdgt.h
 .\objects\main.o: ..\Library\Include\gd32f4xx_misc.h
 .\objects\main.o: ..\Library\Include\gd32f4xx_enet.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\Library\Include\gd32f4xx_exmc.h
 .\objects\main.o: ..\Library\Include\gd32f4xx_ipa.h
 .\objects\main.o: ..\Library\Include\gd32f4xx_tli.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\Utilities\drv_gd25q40.h
 .\objects\main.o: ..\App\systick.h
 .\objects\main.o: ..\FreeRTOS\Source\include\FreeRTOS.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
@@ -51,3 +57,7 @@
 .\objects\main.o: ..\FreeRTOS\Source\include\mpu_wrappers.h
 .\objects\main.o: ..\FreeRTOS\Source\include\task.h
 .\objects\main.o: ..\FreeRTOS\Source\include\list.h
+.\objects\main.o: ..\FreeRTOS\Source\include\queue.h
+.\objects\main.o: ..\FreeRTOS\Source\include\event_groups.h
+.\objects\main.o: ..\FreeRTOS\Source\include\timers.h
+.\objects\main.o: ..\FreeRTOS\Source\include\semphr.h

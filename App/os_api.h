@@ -1,7 +1,15 @@
  #ifndef OS_API_H
 #define OS_API_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdarg.h>
+#include <time.h>
+
 #include "gd32f450i_eval.h"
+#include "drv_gd25q40.h"
 #include "systick.h"
 
 #include "FreeRTOS.h"
@@ -11,19 +19,22 @@
 #include "timers.h"
 #include "semphr.h"
 
-#include "logging.h"
-
 typedef void                          VOID;
 typedef char                          CHAR;
 typedef unsigned char                 UCHAR;
-typedef int                           INT;
-typedef unsigned int                  UINT;
-typedef long                          LONG;
-typedef unsigned long                 ULONG;
+
 typedef short                         SHORT;
 typedef unsigned short                USHORT;
+
+typedef int                           INT;
+typedef unsigned int                  UINT;
+
+typedef long                          LONG;
+typedef unsigned long                 ULONG;
+
 typedef unsigned int                  time_t;
 
+#define _in_ 
 #define _out_
 #define _res_
 #define _lock_task_
@@ -88,7 +99,7 @@ typedef unsigned int                  time_t;
 #define os_task_t                     TaskHandle_t
 #define os_task_create(fun, name, stack, parm, pri, tHandle) \
 								      xTaskCreate(fun, name, stack, parm, pri, _out_ tHandle);
-#define os_task_destory(tHandle)	  vTaskDelete(tHandle)
+#define os_task_destory(tHandle)	    vTaskDelete(tHandle)
 #define os_task_destory_by_self()     vTaskDelete(NULL)
 #define os_task_suspend(tHandle)      vTaskSuspend(tHandle)
 #define os_task_resume(tHandle)       vTaskResume(tHandle)
@@ -155,7 +166,6 @@ typedef unsigned int                  time_t;
 extern   "C" {
 #endif
 
-UINT os_malloc(VOID **memory_ptr, ULONG memory_size);
 
 #ifdef __cplusplus
         }
