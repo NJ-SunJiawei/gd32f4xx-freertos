@@ -88,3 +88,17 @@ void delay_decrement(void)
         delay--;
     }
 }
+
+void delay_nop(uint32_t count)
+{
+    uint8_t i;
+
+    while(count--)
+    {
+         // t=1/200MHZ
+        for(i = 0; i < 50; i++)
+        {
+            __asm("NOP");
+        }
+    }
+}

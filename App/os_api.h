@@ -1,6 +1,7 @@
  #ifndef OS_API_H
 #define OS_API_H
 
+//c system
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,16 +9,21 @@
 #include <stdarg.h>
 #include <time.h>
 
+//driver
 #include "gd32f450i_eval.h"
 #include "drv_gd25q40.h"
 #include "systick.h"
 
+//rtos
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "event_groups.h"
 #include "timers.h"
 #include "semphr.h"
+
+//fatfs
+#include "ff.h" 
 
 typedef void                          VOID;
 typedef char                          CHAR;

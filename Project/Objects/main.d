@@ -61,3 +61,5 @@
 .\objects\main.o: ..\FreeRTOS\Source\include\event_groups.h
 .\objects\main.o: ..\FreeRTOS\Source\include\timers.h
 .\objects\main.o: ..\FreeRTOS\Source\include\semphr.h
+.\objects\main.o: ..\Fatfs\source\ff.h
+.\objects\main.o: ..\Fatfs\source\ffconf.h

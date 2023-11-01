@@ -44,6 +44,10 @@
 ".\objects\timers.o"
 ".\objects\heap_4.o"
 ".\objects\port.o"
+".\objects\diskio.o"
+".\objects\ff.o"
+".\objects\ffsystem.o"
+".\objects\ffunicode.o"
 --strict --scatter ".\Objects\rtosTT.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

@@ -95,7 +95,7 @@ static void SPI_Configuration(void)
     SPI_InitStructure.frame_size = SPI_FRAMESIZE_8BIT;
     SPI_InitStructure.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;
     SPI_InitStructure.nss = SPI_NSS_SOFT;
-    SPI_InitStructure.prescale = SPI_PSC_2;
+    SPI_InitStructure.prescale = SPI_PSC_32;
     SPI_InitStructure.endian = SPI_ENDIAN_MSB;
 
 		spi_i2s_deinit(SPI0);
