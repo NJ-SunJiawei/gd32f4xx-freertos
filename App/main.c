@@ -153,7 +153,7 @@ void file_write_UT(void)
 
 		res_flash = f_open(&file_w, "0:test2.txt", FA_CREATE_ALWAYS | FA_WRITE);
 		if(res_flash == FR_OK){
-				/* 向文件件中写数据 */
+				f_lseek(&file_w, f_size(&file_w));//指向末尾
 				res_flash = f_write(&file_w, g_TestBuf1, sizeof(g_TestBuf1), &bytesWrite);
 				if (res_flash != FR_OK){
 						printf("write file fail\r\n");

@@ -37,6 +37,7 @@ Section Cross References
     main.o(i.file_write_UT) refers to noretval__2printf.o(.text) for __2printf
     main.o(i.file_write_UT) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     main.o(i.file_write_UT) refers to ff.o(i.f_open) for f_open
+    main.o(i.file_write_UT) refers to ff.o(i.f_lseek) for f_lseek
     main.o(i.file_write_UT) refers to ff.o(i.f_write) for f_write
     main.o(i.file_write_UT) refers to ff.o(i.f_close) for f_close
     main.o(i.file_write_UT) refers to main.o(.constdata) for .constdata
@@ -1273,7 +1274,7 @@ Removing Unused input sections from the image.
     Removing gd32f4xx_it.o(.revsh_text), (4 bytes).
     Removing main.o(.rev16_text), (4 bytes).
     Removing main.o(.revsh_text), (4 bytes).
-    Removing main.o(i.file_write_UT), (204 bytes).
+    Removing main.o(i.file_write_UT), (212 bytes).
     Removing systick.o(.rev16_text), (4 bytes).
     Removing systick.o(.revsh_text), (4 bytes).
     Removing systick.o(i.NVIC_SetPriority), (40 bytes).
@@ -2325,7 +2326,7 @@ Removing Unused input sections from the image.
     Removing ff.o(i.putc_init), (20 bytes).
     Removing ffunicode.o(i.ff_oem2uni), (44 bytes).
 
-1055 unused section(s) (total 72458 bytes) removed from the image.
+1055 unused section(s) (total 72466 bytes) removed from the image.
 
 ==============================================================================
 
