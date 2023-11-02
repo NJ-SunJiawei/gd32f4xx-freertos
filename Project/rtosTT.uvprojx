@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>GD32F470</Define>
               <Undefine></Undefine>
-              <IncludePath>..\App;..\CMSIS;..\Library\Include;..\Utilities;..\FreeRTOS\Source\include;..\FreeRTOS\Source\portable\RVDS\ARM_CM4F;..\Fatfs\source</IncludePath>
+              <IncludePath>..\App;..\CMSIS;..\Library\Include;..\Driver;..\FreeRTOS\Source\include;..\FreeRTOS\Source\portable\RVDS\ARM_CM4F;..\Fatfs\source</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -416,6 +416,11 @@
               <FileName>os_api.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\App\os_api.h</FilePath>
+            </File>
+            <File>
+              <FileName>os_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\os_api.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -620,31 +625,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Utilities</GroupName>
-          <Files>
-            <File>
-              <FileName>gd32f450i_eval.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Utilities\gd32f450i_eval.c</FilePath>
-            </File>
-            <File>
-              <FileName>gd32f450i_eval.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Utilities\gd32f450i_eval.h</FilePath>
-            </File>
-            <File>
-              <FileName>drv_gd25q40.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Utilities\drv_gd25q40.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_gd25q40.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Utilities\drv_gd25q40.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Freertos</GroupName>
           <Files>
             <File>
@@ -836,6 +816,51 @@
               <FileName>ffunicode.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Fatfs\source\ffunicode.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>drv_gd25q40.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\drv_gd25q40.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gd25q40.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Driver\drv_gd25q40.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gd25qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\drv_gd25qxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gd25qxx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Driver\drv_gd25qxx.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\drv_sdcard.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_sdcard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Driver\drv_sdcard.h</FilePath>
+            </File>
+            <File>
+              <FileName>gd32f450i_eval.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Driver\gd32f450i_eval.c</FilePath>
+            </File>
+            <File>
+              <FileName>gd32f450i_eval.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Driver\gd32f450i_eval.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -20,8 +20,8 @@
 #define EX_FLASH 0	                  //外部flash,卷标为1
 
 //扇区大小为512，这个是fatfs系统的扇区大小，块大小是8，两数相乘刚好是4096，对应flash的1个扇区大小(4K)
-#define FLASH_SECTOR_SIZE 	FF_MAX_SS  //512
-#define FLASH_BLOCK_SIZE   	8     	   //每个BLOCK有8个扇区
+#define FLASH_SECTOR_SIZE 	FF_MAX_SS  ////4096
+#define FLASH_BLOCK_SIZE   	64     	   //每个BLOCK有16个扇区
 		    
 uint16_t FLASH_SECTOR_COUNT = 1024;
 

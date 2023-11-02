@@ -71,7 +71,7 @@ void gd_eval_SPI_Init(void)
 		gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO_PIN_4);
 		gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_4);	
 	
-    SPI_SCK_LOW; /* SCKPL = 0; SCKPH = 0 */
+		SPI_SCK_LOW; /* SCKPL = 0; SCKPH = 0 */
 }
 
 #else /* 硬件方式 */
@@ -95,7 +95,7 @@ static void SPI_Configuration(void)
     SPI_InitStructure.frame_size = SPI_FRAMESIZE_8BIT;
     SPI_InitStructure.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;
     SPI_InitStructure.nss = SPI_NSS_SOFT;
-    SPI_InitStructure.prescale = SPI_PSC_32;
+    SPI_InitStructure.prescale = SPI_PSC_2;
     SPI_InitStructure.endian = SPI_ENDIAN_MSB;
 
 		spi_i2s_deinit(SPI0);

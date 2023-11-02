@@ -12,6 +12,7 @@
 //driver
 #include "gd32f450i_eval.h"
 #include "drv_gd25q40.h"
+#include "drv_gd25qxx.h"
 #include "systick.h"
 
 //rtos
@@ -45,9 +46,6 @@ typedef unsigned int                  time_t;
 #define _res_
 #define _lock_task_
 #define _lock_isr_
-
-#define OS_SUCCESS     0x00
-#define OS_ERROR       0x01
 
 #define ULONG_MAX      0xFFFFFFFF
 
@@ -172,6 +170,10 @@ typedef unsigned int                  time_t;
 extern   "C" {
 #endif
 
+typedef enum {
+	OS_SUCCESS,
+	OS_ERROR,
+}OS_STATUS;
 
 #ifdef __cplusplus
         }

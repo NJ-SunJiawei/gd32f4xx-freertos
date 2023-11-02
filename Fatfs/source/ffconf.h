@@ -55,7 +55,7 @@
 /  (0:Disable or 1:Enable) Also FF_FS_READONLY needs to be 0 to enable this option. */
 
 
-#define FF_USE_LABEL	1
+#define FF_USE_LABEL	0
 /* This option switches volume label functions, f_getlabel() and f_setlabel().
 /  (0:Disable or 1:Enable) */
 
@@ -97,7 +97,7 @@
 */
 
 
-#define FF_USE_LFN		3
+#define FF_USE_LFN		2
 #define FF_MAX_LFN		255  //bytes
 /* The FF_USE_LFN switches the support for LFN (long file name).
 /
@@ -163,7 +163,7 @@
 / Drive/Volume Configurations
 /---------------------------------------------------------------------------*/
 
-#define FF_VOLUMES		10
+#define FF_VOLUMES		1
 /* Number of volumes (logical drives) to be used. (1-10) */
 
 
@@ -191,7 +191,7 @@
 
 
 #define FF_MIN_SS		512
-#define FF_MAX_SS		512
+#define FF_MAX_SS		4096//512
 /* This set of options configures the range of sector size to be supported. (512,
 /  1024, 2048 or 4096) Always set both 512 for most systems, generic memory card and
 /  harddisk. But a larger value may be required for on-board flash memory and some
