@@ -33,7 +33,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
 OF SUCH DAMAGE.
 */
-
+#include "os_api.h"
 #include "gd32f450i_eval.h"
 
 /* private variables */
@@ -246,4 +246,54 @@ int fputc(int ch, FILE *f)
 	usart_data_transmit(EVAL_COM1, (uint8_t)ch);
 	while(RESET == usart_flag_get(EVAL_COM1, USART_FLAG_TBE));
 	return ch;
+}
+
+//scanf
+int fgetc(FILE *f)
+{
+	return usart_data_receive(EVAL_COM1);
+}
+
+sd_card_info_struct sd_cardinfo;/* information of SD card */
+
+sd_error_enum sd_config(void)
+{
+    sd_error_enum status = SD_OK;
+    uint32_t cardstate = 0;
+    /* initialize the card */
+    status = sd_init();
+    if(SD_OK == status) {
+        status = sd_card_information_get(&sd_cardinfo);
+    }
+    if(SD_OK == status) {
+        status = sd_card_select_deselect(sd_cardinfo.card_rca);
+    }
+    status = sd_cardstatus_get(&cardstate);
+    if(cardstate & 0x02000000) {
+        printf("\r\n The card is locked!");
+#if 0
+        /* unlock the card if necessary */
+        status = sd_lock_unlock(SD_UNLOCK);
+        if(SD_OK != status) {
+            printf("\r\n Unlock failed!");
+            while(1) {
+            }
+        } else {
+            printf("\r\n The card is unlocked! Please reset MCU!");
+        }
+#endif
+        while(1) {
+        }
+    }
+    if((SD_OK == status) && (!(cardstate & 0x02000000))) {
+        /* set bus mode */
+        status = sd_bus_mode_config(SDIO_BUSMODE_4BIT);
+//        status = sd_bus_mode_config( SDIO_BUSMODE_1BIT );
+    }
+    if(SD_OK == status) {
+        /* set data transfer mode */
+//        status = sd_transfer_mode_config( SD_DMA_MODE );
+        status = sd_transfer_mode_config(SD_POLLING_MODE);
+    }
+    return status;
 }

@@ -17,11 +17,12 @@
 //#define DEV_USB		2	/* Example: Map USB MSD to physical drive 2 */
 
 //add by sjw
-#define EX_FLASH 0	                  //外部flash,卷标为1
+#define EX_FLASH 0	                  //外部spi flash,卷标为0
+#define EX_SD    1	                  //外部sd flash,卷标为1
 
 #define FLASH_SECTOR_SIZE 	 FF_MAX_SS   ////4096
 #define FLASH_SECTOR_COUNT   1024
-#define FLASH_BLOCK_SIZE   	 1     	   //擦除扇区的最小个数
+#define FLASH_BLOCK_SIZE   	 1     	   //擦除扇区的最小个数(以扇区为单位)
 
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */
@@ -31,32 +32,6 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
-/*	DSTATUS stat;
-	int result;
-
-	switch (pdrv) {
-	case DEV_RAM :
-		result = RAM_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_MMC :
-		result = MMC_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_USB :
-		result = USB_disk_status();
-
-		// translate the reslut code here
-
-		return stat;
-	}
-	return STA_NOINIT;*/
 	return RES_OK;
 }
 
@@ -70,33 +45,6 @@ DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
 )
 {
-/*	DSTATUS stat;
-	int result;
-
-	switch (pdrv) {
-	case DEV_RAM :
-		result = RAM_disk_initialize();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_MMC :
-		result = MMC_disk_initialize();
-
-		// translate the reslut code here
-
-		return stat;
-
-	case DEV_USB :
-		result = USB_disk_initialize();
-
-		// translate the reslut code here
-
-		return stat;
-	}
-	return STA_NOINIT;*/
-
 	uint8_t res=0;	    
 	switch(pdrv)
 	{
@@ -107,6 +55,9 @@ DSTATUS disk_initialize (
 #else
 			spi_flash_init();
 #endif
+ 			break;
+		case EX_SD://外部flash
+			sd_config();
  			break;
 		default:
 			res=1; 
@@ -128,39 +79,6 @@ DRESULT disk_read (
 	UINT count		/* Number of sectors to read */
 )
 {
-/*	DRESULT res;
-	int result;
-
-	switch (pdrv) {
-	case DEV_RAM :
-		// translate the arguments here
-
-		result = RAM_disk_read(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-
-	case DEV_MMC :
-		// translate the arguments here
-
-		result = MMC_disk_read(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-
-	case DEV_USB :
-		// translate the arguments here
-
-		result = USB_disk_read(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-	}
-
-	return RES_PARERR;*/
 	uint8_t res=0; 
   if (!count) return RES_PARERR;//count不能等于0，否则返回参数错误		 	 
 	switch(pdrv)
@@ -175,6 +93,16 @@ DRESULT disk_read (
 #endif
 				sector++;
 				buff+=FLASH_SECTOR_SIZE;
+			}
+			res=0;
+			break;
+		case EX_SD://外部flash
+			if(count>1)
+			{
+					sd_multiblocks_read((uint32_t *)buff,(uint32_t)sector<<9,512,(uint32_t)count);//?à??ectorμ??á2ù×÷
+			}else
+			{
+					sd_block_read((uint32_t *)buff,(uint32_t)sector<<9,512);
 			}
 			res=0;
 			break;
@@ -201,44 +129,10 @@ DRESULT disk_write (
 	UINT count			/* Number of sectors to write */
 )
 {
-/*	DRESULT res;
-	int result;
-
-	switch (pdrv) {
-	case DEV_RAM :
-		// translate the arguments here
-
-		result = RAM_disk_write(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-
-	case DEV_MMC :
-		// translate the arguments here
-
-		result = MMC_disk_write(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-
-	case DEV_USB :
-		// translate the arguments here
-
-		result = USB_disk_write(buff, sector, count);
-
-		// translate the reslut code here
-
-		return res;
-	}
-
-	return RES_PARERR;*/
 	uint8_t res=0;  
   if (!count)return RES_PARERR;//count不能等于0，否则返回参数错误		 	 
 	switch(pdrv)
 	{
-		
 		case EX_FLASH://外部flash
 			for(;count>0;count--)
 			{
@@ -249,6 +143,16 @@ DRESULT disk_write (
 #endif
 				sector++;
 				buff+=FLASH_SECTOR_SIZE;
+			}
+			res=0;
+			break;
+		case EX_SD://外部flash
+			if(count>1)
+			{
+					sd_multiblocks_write((uint32_t *)buff,(uint32_t)sector<<9,512,(uint32_t)count);//?à??ectorμ??á2ù×÷
+			}else
+			{
+					sd_block_write((uint32_t *)buff,(uint32_t)sector<<9,512);
 			}
 			res=0;
 			break;
@@ -273,49 +177,46 @@ DRESULT disk_ioctl (
 	void *buff		/* Buffer to send/receive control data */
 )
 {
-/*	DRESULT res;
-	int result;
-
-	switch (pdrv) {
-	case DEV_RAM :
-
-		// Process of the command for the RAM drive
-
-		return res;
-
-	case DEV_MMC :
-
-		// Process of the command for the MMC/SD card
-
-		return res;
-
-	case DEV_USB :
-
-		// Process of the command the USB drive
-
-		return res;
-	}
-
-	return RES_PARERR;*/
-
   DRESULT res;						  			     
 	if(pdrv==EX_FLASH)	//外部FLASH  
 	{
 	    switch(cmd)
 	    {
 		    case CTRL_SYNC:
-				res = RES_OK;  //同步操作
+						res = RES_OK;                       //同步操作
 		        break;	 
 		    case GET_SECTOR_SIZE:
-		        *(DWORD*)buff = FLASH_SECTOR_SIZE;  //返回扇区大小，这里为512
+		        *(DWORD*)buff = FLASH_SECTOR_SIZE;  //返回扇区大小
 		        res = RES_OK;
 		        break;	 
 		    case GET_BLOCK_SIZE:
-		        *(DWORD*)buff = FLASH_BLOCK_SIZE;    //返回块大小，这里为8，
+		        *(DWORD*)buff = FLASH_BLOCK_SIZE;    //返回擦除块大小
 		        res = RES_OK;
 		        break;	 
 		    case GET_SECTOR_COUNT:
-		        *(DWORD*)buff = FLASH_SECTOR_COUNT; //返回扇区数量
+		        *(DWORD*)buff = FLASH_SECTOR_COUNT;  //返回扇区数量
+		        res = RES_OK;
+		        break;
+		    default:
+		        res = RES_PARERR;
+		        break;
+	    }
+	}else if(pdrv==EX_SD){
+	    switch(cmd)
+	    {
+		    case CTRL_SYNC:
+						res = RES_OK;           //同步操作
+		        break;	 
+		    case GET_SECTOR_SIZE:
+		        *(DWORD*)buff = 512;
+		        res = RES_OK;
+		        break;	 
+		    case GET_BLOCK_SIZE:
+		        *(DWORD*)buff = 8;
+		        res = RES_OK;
+		        break;	 
+		    case GET_SECTOR_COUNT:
+		        *(DWORD*)buff = 65536; //32G
 		        res = RES_OK;
 		        break;
 		    default:

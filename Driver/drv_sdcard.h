@@ -166,7 +166,7 @@ typedef struct
 }sd_card_info_struct;
 
 /* SD error flags */
-typedef enum
+typedef enum sd_error_type
 {
     SD_OUT_OF_RANGE = 0,                  /* command's argument was out of range */
     SD_ADDRESS_ERROR,                     /* misaligned address which did not match the block length */

@@ -47,6 +47,7 @@
 .\objects\os_api.o: ..\Library\Include\gd32f4xx_tli.h
 .\objects\os_api.o: ..\Driver\drv_gd25q40.h
 .\objects\os_api.o: ..\Driver\drv_gd25qxx.h
+.\objects\os_api.o: ..\Driver\drv_sdcard.h
 .\objects\os_api.o: ..\App\systick.h
 .\objects\os_api.o: ..\FreeRTOS\Source\include\FreeRTOS.h
 .\objects\os_api.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

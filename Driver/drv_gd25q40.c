@@ -15,7 +15,7 @@ static void SPI_Delay( uint32_t n)
     while(n--)
     {
         /* 1us */
-        for(i = 0; i < 50; i++)
+        for(i = 0; i < 5; i++)
         {
             __asm("NOP");
         }

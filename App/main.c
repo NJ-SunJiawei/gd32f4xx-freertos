@@ -110,10 +110,6 @@ void file_write_read_UT(char *filename)
 		FRESULT res_flash;
 		uint32_t bytesWrite = 0;
 		uint32_t bytesRead = 0;
-    TCHAR str[20];
-	
-    res_flash = f_getcwd(str, sizeof(str));
-		printf("file_write_read_UT[%s] UT>>>>\r\n", str);
 
 		res_flash = f_open(&file, filename, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);//FA_OPEN_APPEND
 		if(res_flash == FR_OK){
@@ -148,10 +144,6 @@ void file_read_UT(char *filename)
 		FRESULT res_flash;
 		uint32_t bytesRead = 0;
 
-    TCHAR str[20];
-    res_flash = f_getcwd(str, sizeof(str));
-		printf("file_read_UT[%s] UT>>>>\r\n", str);
-
 		res_flash = f_open(&file_r, filename, FA_OPEN_EXISTING | FA_READ);
 		if(res_flash != FR_OK){
 			printf("file_read_UT open file error[%d]\r\n", res_flash);
@@ -166,7 +158,6 @@ void file_read_UT(char *filename)
 			f_close(&file_r); 
 		}
 }
-
 
 void flash_FAT_check_file_status(char *filename)
 {
@@ -208,7 +199,7 @@ void flash_FAT_format(char *path)
 		uint8_t res = f_mount(&fs,path,1);/**< 挂载文件系统, disk_name就是挂载的设备号为0的设备,1立即执行挂载*/	
 		if(res==FR_NO_FILESYSTEM)/**< FR_NO_FILESYSTEM值为13,表示没有有效的设备*/
 		{
-			res = f_mkfs(path,0,work,sizeof(work));//格式化FLASH,1,盘符;1,不需要引导区,8个扇区为1个簇
+			res = f_mkfs(path,0,work,sizeof(work));//格式化FLASH
 			res = f_mount(NULL, path, 1);/**< 取消文件系统*/
       res = f_mount(&fs, path, 1);/**< 挂载文件系统*/
 			if(res==0)
@@ -226,17 +217,14 @@ void test()
 {
 	UINT tempbw = 0;
 	FRESULT res_flash;
-	res_flash = f_opendir(&File1Dir, "0:");
+	res_flash = f_opendir(&File1Dir, "1:");
 	if(res_flash == FR_OK )//打开目录
 	{
-		res_flash = f_mkdir("20200810");
+		res_flash = f_mkdir("1:/20200810");
 		if(res_flash == FR_OK)//在当前目录下新建文件夹
 		{   
-			f_chdir("0:/20200810");//改变当前工作目录 
-			TCHAR str[32];
-			res_flash = f_getcwd(str, sizeof(str));
-			printf("test[%s] UT>>>>\r\n", str);
-			res_flash	 = f_open(&file,"0:/20200810/20200810.txt",FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+			//f_chdir("1:/20200810");//改变当前工作目录 
+			res_flash	 = f_open(&file,"1:/20200810/20200810.txt",FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
 			if(res_flash == FR_OK)
 			{
 				f_puts("WangChenchen 20200810 create succeed",&file);
@@ -244,16 +232,43 @@ void test()
 				f_write(&file,"FWRITEWCCWCC000123",18,&tempbw);
 				f_close(&file);
 			}else{
-					printf("open \"0:/20200810/20200810.txt\" error[%d]", res_flash);
+					printf("open \"1:/20200810/20200810.txt\" error[%d]", res_flash);
 			}
 		}else{
-			printf("mkdir \"20200810\" error[%d]", res_flash);
+			printf("mkdir \"1:/20200810\" error[%d]", res_flash);
 		}   		
 	}else{
-		printf("opendir \"0:\" error[%d]", res_flash);
+		printf("opendir \"1:\" error[%d]", res_flash);
 	}
-	flash_FAT_check_file_status("0:/20200810");
-	flash_FAT_check_file_status("0:/20200810/20200810.txt");
+	flash_FAT_check_file_status("1:/20200810");
+	flash_FAT_check_file_status("1:/20200810/20200810.txt");
+}
+
+void sdio_flash_UT(void)
+{
+		sd_erase(0 * 512, 1 * 512);
+		printf("sdio_flash_UT>>>>\r\n");
+		sd_block_write((uint32_t *)g_TestBuf1, FLASH_WRITE_ADDRESS, 512);
+		sd_block_read((uint32_t *)g_TestBuf2, FLASH_READ_ADDRESS, 512);
+		printf("sdio_flash_UT read :%s\r\n", g_TestBuf2);
+}
+
+void sdio_flash_init()
+{
+		sd_error_enum sd_error;
+		uint16_t i = 5;
+    do {
+        /* initialize the card, get the card information and configurate the bus mode and transfer mode */
+        sd_error = sd_config();
+    } while((SD_OK != sd_error) && (--i));
+
+    if(i) {
+        printf("Card init success!\r\n");
+    } else {
+        printf("Card init failed!\r\n");
+        while(1) {
+        }
+    }
 }
 
 int main(void)
@@ -264,13 +279,15 @@ int main(void)
 		/* configure uart5 */
 		gd_eval_com_init(EVAL_COM1);
 
+		printf("################################\r\n");
 #if DRV_SPI_SWITCH
 		//spi flash 1
 		gd_eval_GD25Q40_Init();
 		//gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
-		gd_eval_GD25Q40_BulkErase();//清空flash
+		//gd_eval_GD25Q40_BulkErase();//清空FLASH
 		spi_flash_UT1();
 		printf("FLASH ID = 0x%x\r\n", gd_eval_GD25Q40_ReadID());
+		printf("################################\r\n");
 #else
 		//spi flash 2
 		spi_flash_init();
@@ -278,14 +295,28 @@ int main(void)
 		spi_flash_bulk_erase();
 		spi_flash_UT2();
 		printf("FLASH ID = 0x%x\r\n", spi_flash_read_id());
+		printf("################################\r\n");
 #endif
-	
-		flash_FAT_format("0:");//"0:"
+		sdio_flash_init();
+		sdio_flash_UT();
+		//sd_erase(0, 65536 * 512);//清空SD
+		printf("################################\r\n");
 
+		flash_FAT_format("0:");
 		file_write_read_UT("0:test1");
 		flash_FAT_avail_size("0:");
 		flash_FAT_check_file_status("0:test1");
+		f_mount(NULL, "0:", 1);
+		printf("*****************\r\n");
+		printf("*****************\r\n");
+		flash_FAT_format("1:");
+		file_write_read_UT("1:test2");
+		flash_FAT_avail_size("1:");
+		flash_FAT_check_file_status("1:test2");
+		printf("*****************\r\n");
 		test();
+		f_mount(NULL, "1:", 1);
+		printf("################################\r\n");
 
 		os_task_create(app_task1, "app_task1",2048,NULL,4,&task1_handle);// PSP
 		os_task_create(app_task2, "app_task2",2048,NULL,4,&task2_handle);// PSP

@@ -9,3 +9,4 @@ OS_STATUS memory_compare(uint8_t *src, uint8_t *dst, uint16_t length)
     }
     return OS_SUCCESS;
 }
+

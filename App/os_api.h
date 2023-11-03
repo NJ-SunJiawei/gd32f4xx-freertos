@@ -13,6 +13,7 @@
 #include "gd32f450i_eval.h"
 #include "drv_gd25q40.h"
 #include "drv_gd25qxx.h"
+#include "drv_sdcard.h"
 #include "systick.h"
 
 //rtos

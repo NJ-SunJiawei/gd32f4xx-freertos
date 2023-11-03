@@ -149,6 +149,8 @@ uint8_t gd_eval_key_state_get(key_typedef_enum button);
 /* configure COM port */
 void gd_eval_com_init(uint32_t com);
 
+typedef enum sd_error_type sd_error_enum;
+sd_error_enum sd_config(void);
 #ifdef __cplusplus
 }
 #endif
