@@ -1,0 +1,16 @@
+.\objects\ffsystem.o: ..\Fatfs\source\ffsystem.c
+.\objects\ffsystem.o: ..\Fatfs\source\ff.h
+.\objects\ffsystem.o: ..\Fatfs\source\ffconf.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\FreeRTOS.h
+.\objects\ffsystem.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\ffsystem.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\FreeRTOSConfig.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\projdefs.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\portable.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\deprecated_definitions.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\mpu_wrappers.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\semphr.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\queue.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\task.h
+.\objects\ffsystem.o: ..\FreeRTOS\Source\include\list.h

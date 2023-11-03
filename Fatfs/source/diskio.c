@@ -21,7 +21,7 @@
 
 #define FLASH_SECTOR_SIZE 	 FF_MAX_SS   ////4096
 #define FLASH_SECTOR_COUNT   1024
-#define FLASH_BLOCK_SIZE   	 32     	   //每次擦除的大小
+#define FLASH_BLOCK_SIZE   	 1     	   //擦除扇区的最小个数
 
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */
@@ -307,11 +307,11 @@ DRESULT disk_ioctl (
 				res = RES_OK;  //同步操作
 		        break;	 
 		    case GET_SECTOR_SIZE:
-		        *(WORD*)buff = FLASH_SECTOR_SIZE;  //返回扇区大小，这里为512
+		        *(DWORD*)buff = FLASH_SECTOR_SIZE;  //返回扇区大小，这里为512
 		        res = RES_OK;
 		        break;	 
 		    case GET_BLOCK_SIZE:
-		        *(WORD*)buff = FLASH_BLOCK_SIZE;    //返回块大小，这里为8，
+		        *(DWORD*)buff = FLASH_BLOCK_SIZE;    //返回块大小，这里为8，
 		        res = RES_OK;
 		        break;	 
 		    case GET_SECTOR_COUNT:

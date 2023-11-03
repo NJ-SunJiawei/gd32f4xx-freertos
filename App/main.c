@@ -44,9 +44,13 @@ os_task_t  task2_handle;
 #define FLASH_READ_ADDRESS       FLASH_WRITE_ADDRESS
 
 
-static BYTE work[FF_MAX_SS];/**< 挂载工作内存,不可放入线程,占用内存太大*/
-static FATFS fs;/**< 磁盘挂载对象,不可放入线程,占用内存太大*/
-static FIL file, file_w, file_r;/**< 文件对象,不可放入线程,占用内存太大*/
+BYTE work[FF_MAX_SS];/**< 挂载工作内存,不可放入线程,占用内存太大*/
+FATFS fs;/**< 磁盘挂载对象,不可放入线程,占用内存太大*/
+FIL file, file_w, file_r;/**< 文件对象,不可放入线程,占用内存太大*/
+DIR File1Dir;//目录信息结构体
+char g_TestBuf1[64] = "12345,hello world,123456";
+char g_TestBuf2[64] = {0};
+char buffer[10240];
 
 void file_write_UT(char *filename);
 void file_read_UT(char *filename);
@@ -63,7 +67,6 @@ static void app_task1(void* pvParameters)
 			os_msleep(1000);
 			gpio_bit_reset(GPIOC, GPIO_PIN_6);	
 			os_msleep(1000);
-			//file_write_UT();
 		}
 }
 
@@ -76,7 +79,6 @@ static void app_task2(void* pvParameters)
 			os_msleep(200);
 			gpio_bit_reset(GPIOC, GPIO_PIN_13);
 			os_msleep(200);
-			//file_read_UT();
 		}
 }
 
@@ -90,8 +92,6 @@ void Led_Init(void)
 void spi_flash_UT1(void)
 {
 		printf("spi_flash_UT1>>>>\r\n");
-		const char g_TestBuf1[50] = "12345,hello spi_flash_UT1,123456";
-		char g_TestBuf2[50] = {0};
 		gd_eval_GD25Q40_BufferWrite((uint8_t *)g_TestBuf1, FLASH_WRITE_ADDRESS, strlen(g_TestBuf1));
 		gd_eval_GD25Q40_BufferRead((uint8_t *)g_TestBuf2, FLASH_READ_ADDRESS, strlen(g_TestBuf1));
 		printf("spi_flash_UT1 read :%s\r\n", g_TestBuf2);
@@ -100,8 +100,6 @@ void spi_flash_UT1(void)
 void spi_flash_UT2(void)
 {
 		printf("spi_flash_UT2>>>>\r\n");
-		const char g_TestBuf1[50] = "12345,hello spi_flash_UT2,123456";
-		char g_TestBuf2[50] = {0};
 		spi_flash_buffer_write((uint8_t *)g_TestBuf1, FLASH_WRITE_ADDRESS, strlen(g_TestBuf1));
 		spi_flash_buffer_read((uint8_t *)g_TestBuf2, FLASH_READ_ADDRESS, strlen(g_TestBuf1));
 		printf("spi_flash_UT2 read :%s\r\n", g_TestBuf2);
@@ -110,10 +108,8 @@ void spi_flash_UT2(void)
 void file_write_read_UT(char *filename)
 {
 		FRESULT res_flash;
-		uint8_t g_TestBuf1[50] = "0:test1.txt:12345,hello world,123456";
 		uint32_t bytesWrite = 0;
 		uint32_t bytesRead = 0;
-		uint8_t buffer[50] = {0};
     TCHAR str[20];
 	
     res_flash = f_getcwd(str, sizeof(str));
@@ -121,7 +117,7 @@ void file_write_read_UT(char *filename)
 
 		res_flash = f_open(&file, filename, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);//FA_OPEN_APPEND
 		if(res_flash == FR_OK){
-				//res_flash = f_write(&file, g_TestBuf1, sizeof(g_TestBuf1), &bytesWrite);
+				res_flash = f_write(&file, g_TestBuf1, strlen(g_TestBuf1), &bytesWrite);
 				//f_printf(&file, "%s\n", g_TestBuf1);
 				if (res_flash != FR_OK){
 						printf("write file error\r\n");
@@ -137,6 +133,8 @@ void file_write_read_UT(char *filename)
 				}
 				f_sync(&file);
 				res_flash = f_close(&file); 
+				f_sync(&file);
+				f_sync(&file);
 				if(res_flash != FR_OK){
 					printf("file_write_read_UT close file error[%d]\r\n", res_flash);
 				}
@@ -149,9 +147,8 @@ void file_read_UT(char *filename)
 {
 		FRESULT res_flash;
 		uint32_t bytesRead = 0;
-		uint8_t buffer[50] = {0};
+
     TCHAR str[20];
-		
     res_flash = f_getcwd(str, sizeof(str));
 		printf("file_read_UT[%s] UT>>>>\r\n", str);
 
@@ -170,33 +167,6 @@ void file_read_UT(char *filename)
 		}
 }
 
-void file_write_UT(char *filename)
-{
-		printf("write file UT>>>>\r\n");
-
-		FRESULT res_flash;
-		uint8_t g_TestBuf1[50] = "0:test2.txt: 12345,hello world,123456";
-		uint32_t bytesWrite = 0;
-	  TCHAR str[20];
-
-    res_flash = f_getcwd(str, sizeof(str));
-		printf("file_write_UT[%s] UT>>>>\r\n", str);
-
-		res_flash = f_open(&file_w, filename, FA_CREATE_ALWAYS | FA_WRITE);
-		if(res_flash == FR_OK){
-				f_lseek(&file_w, f_size(&file_w));//指向末尾
-				res_flash = f_write(&file_w, g_TestBuf1, sizeof(g_TestBuf1), &bytesWrite);
-				if (res_flash != FR_OK){
-						printf("write file error\r\n");
-						while(1);
-				}else{
-					printf("write file success\r\n");
-				}
-				f_close(&file_w); 
-		}else{
-			printf("file_write_UT open file error\r\n");
-		}
-}
 
 void flash_FAT_check_file_status(char *filename)
 {
@@ -215,7 +185,7 @@ void flash_FAT_check_file_status(char *filename)
                (fno.fattrib & AM_SYS) ? 'S' : '-',
                (fno.fattrib & AM_ARC) ? 'A' : '-');
 		}else{
-				printf("%s is not exist\r\n", filename);
+				printf("%s is not exist[%d]\r\n", filename, res_flash);
 		}
 }
 
@@ -252,6 +222,40 @@ void flash_FAT_format(char *path)
 		flash_FAT_avail_size(path);
 }
 
+void test()
+{
+	UINT tempbw = 0;
+	FRESULT res_flash;
+	res_flash = f_opendir(&File1Dir, "0:");
+	if(res_flash == FR_OK )//打开目录
+	{
+		res_flash = f_mkdir("20200810");
+		if(res_flash == FR_OK)//在当前目录下新建文件夹
+		{   
+			f_chdir("0:/20200810");//改变当前工作目录 
+			TCHAR str[32];
+			res_flash = f_getcwd(str, sizeof(str));
+			printf("test[%s] UT>>>>\r\n", str);
+			res_flash	 = f_open(&file,"0:/20200810/20200810.txt",FA_OPEN_ALWAYS | FA_READ | FA_WRITE);
+			if(res_flash == FR_OK)
+			{
+				f_puts("WangChenchen 20200810 create succeed",&file);
+				f_putc('Q',&file);
+				f_write(&file,"FWRITEWCCWCC000123",18,&tempbw);
+				f_close(&file);
+			}else{
+					printf("open \"0:/20200810/20200810.txt\" error[%d]", res_flash);
+			}
+		}else{
+			printf("mkdir \"20200810\" error[%d]", res_flash);
+		}   		
+	}else{
+		printf("opendir \"0:\" error[%d]", res_flash);
+	}
+	flash_FAT_check_file_status("0:/20200810");
+	flash_FAT_check_file_status("0:/20200810/20200810.txt");
+}
+
 int main(void)
 {
 		Led_Init();
@@ -263,7 +267,7 @@ int main(void)
 #if DRV_SPI_SWITCH
 		//spi flash 1
 		gd_eval_GD25Q40_Init();
-		gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
+		//gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
 		gd_eval_GD25Q40_BulkErase();//清空flash
 		spi_flash_UT1();
 		printf("FLASH ID = 0x%x\r\n", gd_eval_GD25Q40_ReadID());
@@ -278,13 +282,13 @@ int main(void)
 	
 		flash_FAT_format("0:");//"0:"
 
-		file_write_read_UT("0:/test1");
+		file_write_read_UT("0:test1");
 		flash_FAT_avail_size("0:");
-		flash_FAT_check_file_status("0:/test1");
-		file_read_UT("0:/test1");
+		flash_FAT_check_file_status("0:test1");
+		test();
 
-		os_task_create(app_task1, "app_task1",128*4,NULL,4,&task1_handle);// PSP
-		os_task_create(app_task2, "app_task2",128*4,NULL,4,&task2_handle);// PSP
+		os_task_create(app_task1, "app_task1",2048,NULL,4,&task1_handle);// PSP
+		os_task_create(app_task2, "app_task2",2048,NULL,4,&task2_handle);// PSP
 
 		vTaskStartScheduler();
 		while(1);
