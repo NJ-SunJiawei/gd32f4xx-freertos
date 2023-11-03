@@ -9,7 +9,7 @@
 
 #include "ff.h"			/* Obtains integer types */
 #include "diskio.h"		/* Declarations of disk functions */
-#include "drv_gd25q40.h"
+#include "os_api.h"
 
 /* Definitions of physical drive number for each drive */
 //#define DEV_RAM		0	/* Example: Map Ramdisk to physical drive 0 */
@@ -19,11 +19,9 @@
 //add by sjw
 #define EX_FLASH 0	                  //外部flash,卷标为1
 
-//扇区大小为512，这个是fatfs系统的扇区大小，块大小是8，两数相乘刚好是4096，对应flash的1个扇区大小(4K)
-#define FLASH_SECTOR_SIZE 	FF_MAX_SS  ////4096
-#define FLASH_BLOCK_SIZE   	64     	   //每个BLOCK有16个扇区
-		    
-uint16_t FLASH_SECTOR_COUNT = 1024;
+#define FLASH_SECTOR_SIZE 	 FF_MAX_SS   ////4096
+#define FLASH_SECTOR_COUNT   1024
+#define FLASH_BLOCK_SIZE   	 32     	   //每次擦除的大小
 
 /*-----------------------------------------------------------------------*/
 /* Get Drive Status                                                      */
@@ -104,8 +102,11 @@ DSTATUS disk_initialize (
 	{
 		
 		case EX_FLASH://外部flash
+#if DRV_SPI_SWITCH
 			gd_eval_GD25Q40_Init();
-			FLASH_SECTOR_COUNT=2048*12;//GD25Q40,前12M字节给FATFS占用 
+#else
+			spi_flash_init();
+#endif
  			break;
 		default:
 			res=1; 
@@ -167,7 +168,11 @@ DRESULT disk_read (
 		case EX_FLASH://外部flash
 			for(;count>0;count--)
 			{
-				gd_eval_GD25Q40_BufferRead(buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
+#if DRV_SPI_SWITCH
+				gd_eval_GD25Q40_BufferRead((uint8_t *)buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
+#else
+				spi_flash_buffer_read((uint8_t *)buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
+#endif
 				sector++;
 				buff+=FLASH_SECTOR_SIZE;
 			}
@@ -236,8 +241,12 @@ DRESULT disk_write (
 		
 		case EX_FLASH://外部flash
 			for(;count>0;count--)
-			{										    
+			{
+#if DRV_SPI_SWITCH				
 				gd_eval_GD25Q40_BufferWrite((uint8_t *)buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
+#else
+				spi_flash_buffer_write((uint8_t *)buff,sector*FLASH_SECTOR_SIZE,FLASH_SECTOR_SIZE);
+#endif
 				sector++;
 				buff+=FLASH_SECTOR_SIZE;
 			}

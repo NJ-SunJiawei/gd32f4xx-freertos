@@ -102,8 +102,8 @@ void spi_flash_UT2(void)
 		printf("spi_flash_UT2>>>>\r\n");
 		const char g_TestBuf1[50] = "12345,hello spi_flash_UT2,123456";
 		char g_TestBuf2[50] = {0};
-		qspi_quad_flash_buffer_write((uint8_t *)g_TestBuf1, FLASH_WRITE_ADDRESS, strlen(g_TestBuf1));
-		qspi_quad_flash_buffer_read((uint8_t *)g_TestBuf2, FLASH_READ_ADDRESS, strlen(g_TestBuf1));
+		spi_flash_buffer_write((uint8_t *)g_TestBuf1, FLASH_WRITE_ADDRESS, strlen(g_TestBuf1));
+		spi_flash_buffer_read((uint8_t *)g_TestBuf2, FLASH_READ_ADDRESS, strlen(g_TestBuf1));
 		printf("spi_flash_UT2 read :%s\r\n", g_TestBuf2);
 }
 
@@ -121,14 +121,13 @@ void file_write_read_UT(char *filename)
 
 		res_flash = f_open(&file, filename, FA_OPEN_ALWAYS | FA_WRITE | FA_READ);//FA_OPEN_APPEND
 		if(res_flash == FR_OK){
-				res_flash = f_write(&file, g_TestBuf1, sizeof(g_TestBuf1), &bytesWrite);
+				//res_flash = f_write(&file, g_TestBuf1, sizeof(g_TestBuf1), &bytesWrite);
 				//f_printf(&file, "%s\n", g_TestBuf1);
 				if (res_flash != FR_OK){
 						printf("write file error\r\n");
 						while(1);
 				}else{
 					printf("write file[len = %u] success\r\n", bytesWrite);
-					//f_sync(&file);
 					f_lseek(&file, 0);//必须添加，否则读不到
 
 					res_flash = f_read(&file, buffer, sizeof(buffer), &bytesRead);
@@ -136,6 +135,7 @@ void file_write_read_UT(char *filename)
 						printf("read file[len = %u]>>>%s\r\n", bytesRead, buffer);
 					}
 				}
+				f_sync(&file);
 				res_flash = f_close(&file); 
 				if(res_flash != FR_OK){
 					printf("file_write_read_UT close file error[%d]\r\n", res_flash);
@@ -259,7 +259,8 @@ int main(void)
 		nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		/* configure uart5 */
 		gd_eval_com_init(EVAL_COM1);
-#if 0
+
+#if DRV_SPI_SWITCH
 		//spi flash 1
 		gd_eval_GD25Q40_Init();
 		gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
