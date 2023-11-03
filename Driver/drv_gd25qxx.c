@@ -35,6 +35,7 @@ OF SUCH DAMAGE.
 #include "drv_gd25qxx.h"
 #include "gd32f4xx.h"
 #include <string.h>
+#include "os_api.h"
 
 #define WRITE            0x02     /* write to memory instruction */
 #define QUADWRITE        0x32     /* quad write to memory instruction */

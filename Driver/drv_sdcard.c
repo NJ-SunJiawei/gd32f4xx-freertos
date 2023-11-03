@@ -36,6 +36,7 @@ OF SUCH DAMAGE.
 #include "gd32f4xx_sdio.h"
 #include "gd32f4xx_dma.h"
 #include <stddef.h>
+#include "os_api.h"
 
 /* card status of R1 definitions */
 #define SD_R1_OUT_OF_RANGE                  BIT(31)                   /* command's argument was out of the allowed range */
@@ -2401,7 +2402,7 @@ static void dma_transfer_config(uint32_t *srcbuf, uint32_t bufsize)
     /* configure the DMA1 channel 3 */
     dma_struct.periph_addr = (uint32_t)SDIO_FIFO_ADDR;
     dma_struct.memory0_addr = (uint32_t)srcbuf;
-    dma_struct.direction = DMA_MEMORY_TO_PERIPH;
+		dma_struct.direction = DMA_MEMORY_TO_PERIPH;//∑¢ÀÕ
     dma_struct.number = 0;
     dma_struct.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
     dma_struct.memory_inc = DMA_MEMORY_INCREASE_ENABLE;
@@ -2441,7 +2442,7 @@ static void dma_receive_config(uint32_t *dstbuf, uint32_t bufsize)
     /* configure the DMA1 channel 3 */
     dma_struct.periph_addr = (uint32_t)SDIO_FIFO_ADDR;
     dma_struct.memory0_addr = (uint32_t)dstbuf;
-    dma_struct.direction = DMA_PERIPH_TO_MEMORY;
+    dma_struct.direction = DMA_PERIPH_TO_MEMORY;//Ω” ’
     dma_struct.number = 0;
     dma_struct.periph_inc = DMA_PERIPH_INCREASE_DISABLE;
     dma_struct.memory_inc = DMA_MEMORY_INCREASE_ENABLE;

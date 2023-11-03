@@ -27,8 +27,8 @@
 //fatfs
 #include "ff.h" 
 
-#define DRV_SPI_SWITCH 1   //1:drv_gd25q40.h
-
+#define DRV_SPI_SWITCH 1   //1:drv_gd25q40/0:drv_gd25qxx
+#define DMA_SPI_SWITCH 1   //drv_gd25q40 1:DMA+SPI 0:SPI
 typedef void                          VOID;
 typedef char                          CHAR;
 typedef unsigned char                 UCHAR;

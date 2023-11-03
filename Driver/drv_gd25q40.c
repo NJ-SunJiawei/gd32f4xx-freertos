@@ -1,4 +1,5 @@
 #include "drv_gd25q40.h"
+#include "os_api.h"
 
 #if 0 /* 软件模拟 */
 //spi0
@@ -75,17 +76,10 @@ void gd_eval_SPI_Init(void)
 }
 
 #else /* 硬件方式 */
-uint8_t gd_eval_SPI_SwapByte( uint8_t byte)
-{
-    while (spi_i2s_flag_get(SPI0, SPI_FLAG_TBE) == RESET);
-
-    spi_i2s_data_transmit(SPI0, byte);
-
-    while (spi_i2s_flag_get(SPI0, SPI_FLAG_RBNE) == RESET);
-
-    return spi_i2s_data_receive(SPI0);
-}
-
+//uint8_t inDate = 0;
+//uint8_t outDate = 0;
+#define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name)/sizeof(*(arr_name)))
+	
 static void SPI_Configuration(void)
 {
     spi_parameter_struct  SPI_InitStructure; 
@@ -100,21 +94,110 @@ static void SPI_Configuration(void)
 
 		spi_i2s_deinit(SPI0);
     spi_init(SPI0, &SPI_InitStructure);
-    spi_enable(SPI0);      
+    spi_enable(SPI0); 
 }
 
 static void SPI_GpioConfig(void)
 {
 		rcu_periph_clock_enable(RCU_GPIOB);
 		rcu_periph_clock_enable(RCU_SPI0);
+#if DMA_SPI_SWITCH
+    rcu_periph_clock_enable(RCU_DMA1);
+#endif
 		gpio_af_set(GPIOB, GPIO_AF_5, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5);
 		gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5);
 		gpio_output_options_set(GPIOB, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5);	
 }
 
+static void SPI_TX_DMAConfig(uint32_t *buf)
+{
+    dma_single_data_parameter_struct dma_init_struct;
+    /* clear all the interrupt flags */
+    dma_flag_clear(DMA1, DMA_CH5, DMA_FLAG_FEE);
+    dma_flag_clear(DMA1, DMA_CH5, DMA_FLAG_SDE);
+    dma_flag_clear(DMA1, DMA_CH5, DMA_FLAG_TAE);
+    dma_flag_clear(DMA1, DMA_CH5, DMA_FLAG_HTF);
+    dma_flag_clear(DMA1, DMA_CH5, DMA_FLAG_FTF);
+    dma_channel_disable(DMA1, DMA_CH5);
+    dma_deinit(DMA1, DMA_CH5);
+		spi_dma_disable(SPI0, SPI_DMA_TRANSMIT);
+	
+    /* configure SPI1 transmit dma */
+    dma_deinit(DMA1, DMA_CH5);
+    dma_init_struct.periph_addr         = (uint32_t)&SPI_DATA(SPI0);
+    dma_init_struct.memory0_addr        = (uint32_t)buf;
+    dma_init_struct.direction           = DMA_MEMORY_TO_PERIPH;//TX
+    dma_init_struct.periph_memory_width = DMA_PERIPH_WIDTH_8BIT;
+    dma_init_struct.priority            = DMA_PRIORITY_HIGH;
+    dma_init_struct.number              = ARRAYNUM(buf);
+    dma_init_struct.periph_inc          = DMA_PERIPH_INCREASE_DISABLE;
+    dma_init_struct.memory_inc          = DMA_MEMORY_INCREASE_ENABLE;
+    dma_init_struct.circular_mode       = DMA_CIRCULAR_MODE_DISABLE;
+    dma_single_data_mode_init(DMA1, DMA_CH5, &dma_init_struct);
+    dma_channel_subperipheral_select(DMA1, DMA_CH5, DMA_SUBPERI3);
+
+    dma_channel_enable(DMA1, DMA_CH5);
+    spi_dma_enable(SPI0, SPI_DMA_TRANSMIT);
+}
+
+static void SPI_RX_DMAConfig(uint32_t *buf)
+{
+    dma_single_data_parameter_struct dma_init_struct;
+    /* clear all the interrupt flags */
+    dma_flag_clear(DMA1, DMA_CH2, DMA_FLAG_FEE);
+    dma_flag_clear(DMA1, DMA_CH2, DMA_FLAG_SDE);
+    dma_flag_clear(DMA1, DMA_CH2, DMA_FLAG_TAE);
+    dma_flag_clear(DMA1, DMA_CH2, DMA_FLAG_HTF);
+    dma_flag_clear(DMA1, DMA_CH2, DMA_FLAG_FTF);
+    dma_channel_disable(DMA1, DMA_CH2);
+    dma_deinit(DMA1, DMA_CH2);
+		spi_dma_disable(SPI0, SPI_DMA_RECEIVE);
+
+    /* configure SPI0 receive dma */
+    dma_deinit(DMA1, DMA_CH2);
+    dma_init_struct.periph_addr  = (uint32_t)&SPI_DATA(SPI0);
+    dma_init_struct.memory0_addr = (uint32_t)buf;
+    dma_init_struct.direction    = DMA_PERIPH_TO_MEMORY;//RX
+    dma_init_struct.priority     = DMA_PRIORITY_LOW;
+    dma_single_data_mode_init(DMA1, DMA_CH2, &dma_init_struct);
+    dma_channel_subperipheral_select(DMA1, DMA_CH2, DMA_SUBPERI3);
+
+    dma_channel_enable(DMA1, DMA_CH2);
+    spi_dma_enable(SPI0, SPI_DMA_RECEIVE);
+}
+
+
+uint8_t gd_eval_SPI_SwapByte(uint8_t byte)
+{
+#if DMA_SPI_SWITCH
+		uint8_t inDate = byte;
+		//printf("inDate = 0x%02x\r\n", inDate);
+		SPI_TX_DMAConfig((uint32_t*)&inDate);
+		while((RESET == dma_flag_get(DMA1, DMA_CH5, DMA_FLAG_FTF)));
+
+		uint8_t outDate = 0;
+		SPI_RX_DMAConfig((uint32_t*)&outDate);
+		while((RESET == dma_flag_get(DMA1, DMA_CH2, DMA_FLAG_FTF)));
+		//printf("outDate = 0x%02x\r\n", outDate);
+		return outDate;
+#else
+    while (spi_i2s_flag_get(SPI0, SPI_FLAG_TBE) == RESET);
+
+    spi_i2s_data_transmit(SPI0, byte);
+
+    while (spi_i2s_flag_get(SPI0, SPI_FLAG_RBNE) == RESET);
+
+    return spi_i2s_data_receive(SPI0);
+#endif
+}
+
 void gd_eval_SPI_Init(void)
 {
     SPI_GpioConfig();
+#if DMA_SPI_SWITCH
+		SPI_TX_DMAConfig(0);
+		SPI_RX_DMAConfig(0);
+#endif
     SPI_Configuration();
 }
 #endif
@@ -308,8 +391,8 @@ uint32_t gd_eval_GD25Q40_ReadID(void)
 void gd_eval_GD25Q40_Init(void)
 {
     gd_eval_SPI_Init();
-    rcu_periph_clock_enable(RCU_GPIOE);
 
+    rcu_periph_clock_enable(RCU_GPIOE);
     gpio_mode_set(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_2);
     gpio_output_options_set(GPIOE, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2);	
 }

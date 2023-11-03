@@ -50,7 +50,7 @@ FIL file, file_w, file_r;/**< 文件对象,不可放入线程,占用内存太大*/
 DIR File1Dir;//目录信息结构体
 char g_TestBuf1[64] = "12345,hello world,123456";
 char g_TestBuf2[64] = {0};
-char buffer[10240];
+char buffer[FF_MAX_SS];
 
 void file_write_UT(char *filename);
 void file_read_UT(char *filename);
@@ -284,7 +284,7 @@ int main(void)
 		//spi flash 1
 		gd_eval_GD25Q40_Init();
 		//gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
-		//gd_eval_GD25Q40_BulkErase();//清空FLASH
+		gd_eval_GD25Q40_BulkErase();//清空FLASH
 		spi_flash_UT1();
 		printf("FLASH ID = 0x%x\r\n", gd_eval_GD25Q40_ReadID());
 		printf("################################\r\n");
