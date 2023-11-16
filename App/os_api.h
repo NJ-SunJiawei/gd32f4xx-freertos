@@ -59,7 +59,7 @@ typedef unsigned int                  time_t;
 #define os_time_get_ISR()              _res_ (TickType_t)xTaskGetTickCountFromISR()
 #define os_free(ptr)                   if(ptr) vPortFree(ptr)
 
-#define time_block(ticks) ((ticks == -1) ? portMAX_DELAY : ticks)
+#define time_block(ticks) ((ticks == (unsigned int)-1) ? portMAX_DELAY : ticks)
 /*static mem*/
 #define os_byte_pool           StackType_t  //StackType_t  Stackpool[8]
 

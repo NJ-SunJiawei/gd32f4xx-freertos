@@ -53,7 +53,7 @@
 #define configTICK_RATE_HZ				( ( TickType_t ) 1000 )//时间片长度1ms = systick周期
 #define configMAX_PRIORITIES			( 5 ) //task任务优先级
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 130 )
-#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )//静态区内存池大小75k
+#define configTOTAL_HEAP_SIZE			( ( size_t ) ( 30 * 1024 ) )//静态区内存池大小75k
 #define configMAX_TASK_NAME_LEN			( 10 )
 #define configUSE_TRACE_FACILITY		1
 #define configUSE_16_BIT_TICKS			0

@@ -58,16 +58,30 @@ void file_write_read_UT(char *filename);
 void flash_FAT_avail_size(char *path);
 void flash_FAT_check_file_status(char *filename);
 
+os_sema_t  task_lock;
+
 static void app_task1(void* pvParameters)
 {
 		for(;;)
 		{
+			BaseType_t err = os_sema_wait(task_lock, (unsigned int)-1);
+			if(err != pdTRUE){
+				printf("block err %u\r\n", os_time_get());
+			}
 			printf("task1 enter %u\r\n", os_time_get());
-			gpio_bit_set(GPIOC, GPIO_PIN_6);	
+			gpio_bit_set(GPIOE, GPIO_PIN_2);	
 			os_msleep(1000);
-			gpio_bit_reset(GPIOC, GPIO_PIN_6);	
+			gpio_bit_reset(GPIOE, GPIO_PIN_2);	
 			os_msleep(1000);
 		}
+}
+void EXTI10_15_IRQHandler(void)
+{
+		BaseType_t taskswitch;
+    if(RESET != exti_interrupt_flag_get(EXTI_13)) {
+				os_count_sema_post_ISR(task_lock, &taskswitch);
+        exti_interrupt_flag_clear(EXTI_13);
+    }
 }
 
 static void app_task2(void* pvParameters)
@@ -75,18 +89,18 @@ static void app_task2(void* pvParameters)
 		for(;;)
 		{
 			printf("task2 enter %u\r\n", os_time_get());
-			gpio_bit_set(GPIOC, GPIO_PIN_13);	
+			gpio_bit_set(GPIOE, GPIO_PIN_3);	
 			os_msleep(200);
-			gpio_bit_reset(GPIOC, GPIO_PIN_13);
+			gpio_bit_reset(GPIOE, GPIO_PIN_3);
 			os_msleep(200);
 		}
 }
 
 void Led_Init(void)
 {
-		rcu_periph_clock_enable(RCU_GPIOC);
-		gpio_mode_set(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_6|GPIO_PIN_13);
-		gpio_output_options_set(GPIOC, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_6|GPIO_PIN_13);	
+		rcu_periph_clock_enable(RCU_GPIOE);
+		gpio_mode_set(GPIOE, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_2|GPIO_PIN_3);
+		gpio_output_options_set(GPIOE, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2|GPIO_PIN_3);	
 }
 
 void spi_flash_UT1(void)
@@ -271,23 +285,41 @@ void sdio_flash_init()
     }
 }
 
+void gpio_exit_ISR(void)
+{
+	  /* enable the Tamper key GPIO clock */
+    rcu_periph_clock_enable(RCU_GPIOC);
+    rcu_periph_clock_enable(RCU_SYSCFG);
+
+    gpio_mode_set(GPIOC, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO_PIN_13);
+
+    /* enable and set key EXTI interrupt priority */
+    nvic_irq_enable(EXTI10_15_IRQn, 7U, 0U);
+    /* connect key EXTI line to key GPIO pin */
+    syscfg_exti_line_config(EXTI_SOURCE_GPIOC, EXTI_SOURCE_PIN13);
+    /* configure key EXTI line */
+    exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+    exti_interrupt_flag_clear(EXTI_13);
+}
+
 int main(void)
 {
 		Led_Init();
+		gpio_exit_ISR();
 
 		nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		/* configure uart5 */
-		gd_eval_com_init(EVAL_COM1);
-
+		gd_eval_com_init(EVAL_COM0);
+	
 		printf("################################\r\n");
 #if DRV_SPI_SWITCH
 		//spi flash 1
-		gd_eval_GD25Q40_Init();
+		//gd_eval_GD25Q40_Init();
 		//gd_eval_GD25Q40_SectorErase(FLASH_WRITE_ADDRESS);
-		gd_eval_GD25Q40_BulkErase();//Çå¿ÕFLASH
-		spi_flash_UT1();
-		printf("FLASH ID = 0x%x\r\n", gd_eval_GD25Q40_ReadID());
-		printf("################################\r\n");
+		//gd_eval_GD25Q40_BulkErase();//Çå¿ÕFLASH
+		//spi_flash_UT1();
+		//printf("FLASH ID = 0x%x\r\n", gd_eval_GD25Q40_ReadID());
+		//printf("################################\r\n");
 #else
 		//spi flash 2
 		spi_flash_init();
@@ -297,26 +329,27 @@ int main(void)
 		printf("FLASH ID = 0x%x\r\n", spi_flash_read_id());
 		printf("################################\r\n");
 #endif
-		sdio_flash_init();
-		sdio_flash_UT();
+		//sdio_flash_init();
+		//sdio_flash_UT();
 		//sd_erase(0, 65536 * 512);//Çå¿ÕSD
 		printf("################################\r\n");
 
-		flash_FAT_format("0:");
-		file_write_read_UT("0:test1");
-		flash_FAT_avail_size("0:");
-		flash_FAT_check_file_status("0:test1");
-		f_mount(NULL, "0:", 1);
-		printf("*****************\r\n");
-		printf("*****************\r\n");
-		flash_FAT_format("1:");
-		file_write_read_UT("1:test2");
-		flash_FAT_avail_size("1:");
-		flash_FAT_check_file_status("1:test2");
-		printf("*****************\r\n");
-		test();
-		f_mount(NULL, "1:", 1);
+		//flash_FAT_format("0:");
+		//file_write_read_UT("0:test1");
+		//flash_FAT_avail_size("0:");
+		//flash_FAT_check_file_status("0:test1");
+		//f_mount(NULL, "0:", 1);
+		//printf("*****************\n\r");
+		//printf("*****************\n\r");
+		//flash_FAT_format("1:");
+		//file_write_read_UT("1:test2");
+		//flash_FAT_avail_size("1:");
+		//flash_FAT_check_file_status("1:test2");
+		//printf("*****************\r\n");
+		//test();
+		//f_mount(NULL, "1:", 1);
 		printf("################################\r\n");
+		task_lock = os_sema_init();
 
 		os_task_create(app_task1, "app_task1",2048,NULL,4,&task1_handle);// PSP
 		os_task_create(app_task2, "app_task2",2048,NULL,4,&task2_handle);// PSP
