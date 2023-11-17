@@ -339,9 +339,6 @@ void bootloader_run(void)
 
 		if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FF00000 ) == 0x00000000) //ApplicationAddress为新程序的起始地址，检查栈顶地址是否合法
 		{
-			 // gpio_bit_toggle(GPIOG, GPIO_PIN_10);
-				usart_disable(USART0);
-				dma_channel_disable(DMA1, DMA_CH2);
 				JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);               //用户代码区第二个字存储为新程序起始地址（新程序复位向量指针）
 				Jump_To_Application = (pFunction) JumpAddress;                          
 				__set_MSP(*(__IO uint32_t*) ApplicationAddress);                        //初始化APP堆栈指针(用户代码区的第一个字用于存放栈顶地址)
