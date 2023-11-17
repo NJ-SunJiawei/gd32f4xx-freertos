@@ -151,6 +151,8 @@ void gd_eval_com_init(uint32_t com);
 
 typedef enum sd_error_type sd_error_enum;
 sd_error_enum sd_config(void);
+
+void bootloader_run(void);
 #ifdef __cplusplus
 }
 #endif

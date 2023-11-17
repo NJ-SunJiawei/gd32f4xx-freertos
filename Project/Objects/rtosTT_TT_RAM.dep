@@ -42,8 +42,8 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\App\systick.h)(0x65558A73)
 F (..\App\gd32f4xx_it.h)(0x65558A73)()
 F (..\App\gd32f4xx_libopt.h)(0x65558A73)()
-F (..\App\main.c)(0x65558B11)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (..\App\os_api.h)(0x65558B90)
+F (..\App\main.c)(0x6555E62D)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
@@ -91,6 +91,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -149,9 +150,9 @@ I (..\Library\Include\gd32f4xx_ipa.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\App\systick.h)(0x65558A73)
 F (..\App\systick.h)(0x65558A73)()
-F (..\App\os_api.h)(0x65558B90)()
+F (..\App\os_api.h)(0x6555EC5A)()
 F (..\App\os_api.c)(0x65558A73)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\os_api.o --omf_browse .\objects\os_api.crf --depend .\objects\os_api.d)
-I (..\App\os_api.h)(0x65558B90)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
@@ -199,6 +200,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -1556,7 +1558,7 @@ I (..\FreeRTOS\Source\include\queue.h)(0x65558A74)
 I (..\FreeRTOS\Source\include\task.h)(0x65558A74)
 I (..\FreeRTOS\Source\include\list.h)(0x65558A74)
 I (..\Fatfs\source\diskio.h)(0x65558A74)
-I (..\App\os_api.h)(0x65558B90)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
@@ -1603,6 +1605,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\event_groups.h)(0x65558A74)
 I (..\FreeRTOS\Source\include\timers.h)(0x65558A74)
@@ -1700,7 +1703,7 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
-I (..\App\os_api.h)(0x65558B90)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x599EDB3E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
@@ -1708,6 +1711,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x599EDB3E)
 I (..\Driver\gd32f450i_eval.h)(0x65558A74)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -1767,7 +1771,7 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
-I (..\App\os_api.h)(0x65558B90)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x599EDB3E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
@@ -1775,6 +1779,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x599EDB3E)
 I (..\Driver\gd32f450i_eval.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -1834,7 +1839,7 @@ I (..\Library\Include\gd32f4xx_exmc.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_ipa.h)(0x65558A74)
 I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
-I (..\App\os_api.h)(0x65558B90)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\ctype.h)(0x599EDB3E)
@@ -1843,6 +1848,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\time.h)(0x599EDB3E)
 I (..\Driver\gd32f450i_eval.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (..\FreeRTOS\Source\include\FreeRTOSConfig.h)(0x65558AC0)
@@ -1860,8 +1866,8 @@ I (..\FreeRTOS\Source\include\semphr.h)(0x65558A74)
 I (..\Fatfs\source\ff.h)(0x65558A74)
 I (..\Fatfs\source\ffconf.h)(0x65558A74)
 F (..\Driver\drv_sdcard.h)(0x65558A73)()
-F (..\Driver\gd32f450i_eval.c)(0x65558ACC)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f450i_eval.o --omf_browse .\objects\gd32f450i_eval.crf --depend .\objects\gd32f450i_eval.d)
-I (..\App\os_api.h)(0x65558B90)
+F (..\Driver\gd32f450i_eval.c)(0x6555E633)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\gd32f450i_eval.o --omf_browse .\objects\gd32f450i_eval.crf --depend .\objects\gd32f450i_eval.d)
+I (..\App\os_api.h)(0x6555EC5A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EDB3C)
@@ -1909,6 +1915,7 @@ I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
 I (..\Driver\drv_gd25q40.h)(0x65558A73)
 I (..\Driver\drv_gd25qxx.h)(0x65558A73)
 I (..\Driver\drv_sdcard.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
 I (..\App\systick.h)(0x65558A73)
 I (..\FreeRTOS\Source\include\FreeRTOS.h)(0x65558A74)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -1927,3 +1934,45 @@ I (..\FreeRTOS\Source\include\semphr.h)(0x65558A74)
 I (..\Fatfs\source\ff.h)(0x65558A74)
 I (..\Fatfs\source\ffconf.h)(0x65558A74)
 F (..\Driver\gd32f450i_eval.h)(0x65558A74)()
+F (..\Driver\exmc_sdram.c)(0x6555EC8A)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\App -I ..\CMSIS -I ..\Library\Include -I ..\Driver -I ..\FreeRTOS\Source\include -I ..\FreeRTOS\Source\portable\RVDS\ARM_CM4F -I ..\Fatfs\source-I.\RTE\_TT_RAM-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0\Device\F4XX\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\PACK\GigaDevice\GD32F4xx_DFP\3.0.0-D__UVISION_VERSION="526" -DGD32F470 -DGD32F470-o .\objects\exmc_sdram.o --omf_browse .\objects\exmc_sdram.crf --depend .\objects\exmc_sdram.d)
+I (..\CMSIS\gd32f4xx.h)(0x65558A73)
+I (..\CMSIS\core_cm4.h)(0x65558A73)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
+I (..\CMSIS\core_cmInstr.h)(0x65558A73)
+I (..\CMSIS\core_cmFunc.h)(0x65558A73)
+I (..\CMSIS\core_cm4_simd.h)(0x65558A73)
+I (..\CMSIS\system_gd32f4xx.h)(0x65558A73)
+I (..\App\gd32f4xx_libopt.h)(0x65558A73)
+I (..\Library\Include\gd32f4xx_rcu.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_adc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_can.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_crc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_ctc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_dac.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_dbg.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_dci.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_dma.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_exti.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_fmc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_fwdgt.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_gpio.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_syscfg.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_i2c.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_iref.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_pmu.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_rtc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_sdio.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_spi.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_timer.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_trng.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_usart.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_wwdgt.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_misc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_enet.h)(0x65558A74)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
+I (..\Library\Include\gd32f4xx_exmc.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_ipa.h)(0x65558A74)
+I (..\Library\Include\gd32f4xx_tli.h)(0x65558A74)
+I (..\App\systick.h)(0x65558A73)
+I (..\Driver\exmc_sdram.h)(0x63B4F3C7)
+F (..\Driver\exmc_sdram.h)(0x63B4F3C7)()

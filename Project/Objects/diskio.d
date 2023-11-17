@@ -63,6 +63,8 @@
 .\objects\diskio.o: ..\Driver\drv_gd25q40.h
 .\objects\diskio.o: ..\Driver\drv_gd25qxx.h
 .\objects\diskio.o: ..\Driver\drv_sdcard.h
+.\objects\diskio.o: ..\Driver\exmc_sdram.h
+.\objects\diskio.o: ..\Driver\fmc_operation.h
 .\objects\diskio.o: ..\App\systick.h
 .\objects\diskio.o: ..\FreeRTOS\Source\include\event_groups.h
 .\objects\diskio.o: ..\FreeRTOS\Source\include\timers.h

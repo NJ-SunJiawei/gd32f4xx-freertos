@@ -285,7 +285,7 @@ void sdio_flash_init()
     }
 }
 
-void gpio_exit_ISR(void)
+void gpio_exit_ISR_init(void)
 {
 	  /* enable the Tamper key GPIO clock */
     rcu_periph_clock_enable(RCU_GPIOC);
@@ -300,12 +300,28 @@ void gpio_exit_ISR(void)
     /* configure key EXTI line */
     exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
     exti_interrupt_flag_clear(EXTI_13);
+	
+		task_lock = os_sema_init();
 }
 
+#define bootloader_flag
 int main(void)
 {
+		/* configure uart5 */
+		gd_eval_com_init(EVAL_COM0);
+
+#ifdef bootloader_flag
+		//TT_ext_sdram_bootloader
+		bootloader_run();
+#else
+	  {
+			//TT_ext_sdram(code)+chip_ram(data)
+			nvic_vector_table_set(0, 0);
+		}
+
 		Led_Init();
-		gpio_exit_ISR();
+	
+		gpio_exit_ISR_init();
 
 		nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 		/* configure uart5 */
@@ -349,11 +365,11 @@ int main(void)
 		//test();
 		//f_mount(NULL, "1:", 1);
 		printf("################################\r\n");
-		task_lock = os_sema_init();
 
 		os_task_create(app_task1, "app_task1",2048,NULL,4,&task1_handle);// PSP
 		os_task_create(app_task2, "app_task2",2048,NULL,4,&task2_handle);// PSP
 
 		vTaskStartScheduler();
 		while(1);
+#endif
 }

@@ -51,6 +51,8 @@
 ".\objects\drv_gd25qxx.o"
 ".\objects\drv_sdcard.o"
 ".\objects\gd32f450i_eval.o"
+".\objects\exmc_sdram.o"
+".\objects\fmc_operation.o"
 --library_type=microlib --strict --scatter ".\Objects\rtosTT.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

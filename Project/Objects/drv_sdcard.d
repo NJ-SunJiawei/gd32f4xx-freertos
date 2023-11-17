@@ -49,6 +49,8 @@
 .\objects\drv_sdcard.o: ..\Driver\gd32f450i_eval.h
 .\objects\drv_sdcard.o: ..\Driver\drv_gd25q40.h
 .\objects\drv_sdcard.o: ..\Driver\drv_gd25qxx.h
+.\objects\drv_sdcard.o: ..\Driver\exmc_sdram.h
+.\objects\drv_sdcard.o: ..\Driver\fmc_operation.h
 .\objects\drv_sdcard.o: ..\App\systick.h
 .\objects\drv_sdcard.o: ..\FreeRTOS\Source\include\FreeRTOS.h
 .\objects\drv_sdcard.o: ..\FreeRTOS\Source\include\FreeRTOSConfig.h

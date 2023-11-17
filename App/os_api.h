@@ -14,6 +14,8 @@
 #include "drv_gd25q40.h"
 #include "drv_gd25qxx.h"
 #include "drv_sdcard.h"
+#include "exmc_sdram.h"
+#include "fmc_operation.h"
 #include "systick.h"
 
 //rtos

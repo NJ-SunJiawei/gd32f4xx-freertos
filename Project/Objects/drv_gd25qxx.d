@@ -48,6 +48,8 @@
 .\objects\drv_gd25qxx.o: ..\Driver\gd32f450i_eval.h
 .\objects\drv_gd25qxx.o: ..\Driver\drv_gd25q40.h
 .\objects\drv_gd25qxx.o: ..\Driver\drv_sdcard.h
+.\objects\drv_gd25qxx.o: ..\Driver\exmc_sdram.h
+.\objects\drv_gd25qxx.o: ..\Driver\fmc_operation.h
 .\objects\drv_gd25qxx.o: ..\App\systick.h
 .\objects\drv_gd25qxx.o: ..\FreeRTOS\Source\include\FreeRTOS.h
 .\objects\drv_gd25qxx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

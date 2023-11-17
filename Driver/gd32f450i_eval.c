@@ -297,3 +297,55 @@ sd_error_enum sd_config(void)
     }
     return status;
 }
+
+typedef void (*pFunction)(void);
+pFunction Jump_To_Application;
+uint32_t JumpAddress = 0;
+#define ApplicationAddress    0xC0000000 //sdram start
+
+#define FLASH_READ_ADDRESS    0x08004000//app start
+#define SDRAM_WRITE_READ_ADDR 0x00000000//sdram start
+#define BUFFER_SIZE           0x01
+#define SRAM_SIZE             (BUFFER_SIZE*4)
+uint32_t addr = 0x00000000;
+int32_t rxbuffer[BUFFER_SIZE];
+
+void bootloader_run(void)
+{
+		exmc_synchronous_dynamic_ram_init(EXMC_SDRAM_DEVICE0);
+    printf("SDRAM initialized!\r\n");
+    delay_nop(10);
+		//fmc_erase_sector_by_address(FLASH_READ_ADDRESS);
+	  // 0 16K(0x4000)
+		//fmc_erase_sector(1);//16K
+		//fmc_erase_sector(2);//16K
+		//fmc_erase_sector(3);//16K
+		//fmc_erase_sector(4);//64K
+		//fmc_erase_sector(5);//128K
+	
+		while(addr < 0x04000){
+				memset(rxbuffer, 0x00, BUFFER_SIZE);
+				// read a block of data from the flash to rx_buffer
+				fmc_read_32bit_data(FLASH_READ_ADDRESS + addr, BUFFER_SIZE, rxbuffer);
+				sdram_writebuffer_8(EXMC_SDRAM_DEVICE0, (uint8_t *)rxbuffer, SDRAM_WRITE_READ_ADDR + addr, SRAM_SIZE);
+				addr += SRAM_SIZE;
+				//printf("next start addr:0x%08x\r\n", (FLASH_READ_ADDRESS + addr));
+		}
+		printf("move success\r\n");
+		
+		rcu_periph_clock_enable(RCU_SYSCFG);
+		//SDRAM bank0 of EXMC (0xC0000000~0xC7FFFFFF) is mapped at address 0x00000000
+		syscfg_bootmode_config(SYSCFG_BOOTMODE_EXMC_SDRAM);
+
+		if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FF00000 ) == 0x00000000) //ApplicationAddress为新程序的起始地址，检查栈顶地址是否合法
+		{
+			 // gpio_bit_toggle(GPIOG, GPIO_PIN_10);
+				usart_disable(USART0);
+				dma_channel_disable(DMA1, DMA_CH2);
+				JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);               //用户代码区第二个字存储为新程序起始地址（新程序复位向量指针）
+				Jump_To_Application = (pFunction) JumpAddress;                          
+				__set_MSP(*(__IO uint32_t*) ApplicationAddress);                        //初始化APP堆栈指针(用户代码区的第一个字用于存放栈顶地址)
+				Jump_To_Application();                                                  // 设置PC指针为新程序复位中断函数的地址
+		}
+		printf("boot success\r\n");
+}
