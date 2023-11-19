@@ -322,8 +322,9 @@ void bootloader_run(void)
 		//fmc_erase_sector(3);//16K
 		//fmc_erase_sector(4);//64K
 		//fmc_erase_sector(5);//128K
-	
-		while(addr < 0x04000){
+		
+		//只需要搬向量表
+		while(addr < 0x000001ac){
 				memset(rxbuffer, 0x00, BUFFER_SIZE);
 				// read a block of data from the flash to rx_buffer
 				fmc_read_32bit_data(FLASH_READ_ADDRESS + addr, BUFFER_SIZE, rxbuffer);
@@ -336,8 +337,9 @@ void bootloader_run(void)
 		rcu_periph_clock_enable(RCU_SYSCFG);
 		//SDRAM bank0 of EXMC (0xC0000000~0xC7FFFFFF) is mapped at address 0x00000000
 		syscfg_bootmode_config(SYSCFG_BOOTMODE_EXMC_SDRAM);
-
-		if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FF00000 ) == 0x00000000) //ApplicationAddress为新程序的起始地址，检查栈顶地址是否合法
+	
+		//暂时屏蔽
+		//if (((*(__IO uint32_t*)ApplicationAddress) & 0x2FF00000 ) == 0x00000000) //ApplicationAddress为新程序的起始地址，检查栈顶地址是否合法
 		{
 				JumpAddress = *(__IO uint32_t*) (ApplicationAddress + 4);               //用户代码区第二个字存储为新程序起始地址（新程序复位向量指针）
 				Jump_To_Application = (pFunction) JumpAddress;                          
